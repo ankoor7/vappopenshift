@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  location: MyString
+  number_volunteers: 1
+  date: 2013-08-23 16:21:41
+  description: MyText
+  special_instructions: MyText
+
+two:
+  name: MyString
+  location: MyString
+  number_volunteers: 1
+  date: 2013-08-23 16:21:41
+  description: MyText
+  special_instructions: MyText
