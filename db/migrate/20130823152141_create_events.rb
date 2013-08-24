@@ -1,6 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
+      t.belongs_to :charity
       t.string :name
       t.string :location
       t.integer :number_volunteers
