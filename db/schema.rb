@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130823153402) do
+ActiveRecord::Schema.define(:version => 20130824170914) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -36,13 +36,53 @@ ActiveRecord::Schema.define(:version => 20130823153402) do
     t.datetime "updated_at",           :null => false
   end
 
-  create_table "events_users", :force => true do |t|
-    t.integer "event_id"
-    t.integer "user_id"
+  create_table "events_volunteers", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "volunteer_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "events_users", ["event_id"], :name => "index_events_users_on_event_id"
-  add_index "events_users", ["user_id"], :name => "index_events_users_on_user_id"
+  add_index "events_volunteers", ["event_id", "volunteer_id"], :name => "index_events_volunteers_on_event_id_and_volunteer_id", :unique => true
+  add_index "events_volunteers", ["event_id"], :name => "index_events_volunteers_on_event_id"
+  add_index "events_volunteers", ["volunteer_id"], :name => "index_events_volunteers_on_volunteer_id"
+
+  create_table "groups", :force => true do |t|
+    t.integer  "charity_id"
+    t.string   "name"
+    t.string   "location"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "website"
+    t.integer  "groups_leaders_id"
+    t.integer  "groups_volunteers_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"
+
+  create_table "groups_leaders", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "leader_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "groups_leaders", ["group_id", "leader_id"], :name => "index_groups_leaders_on_group_id_and_leader_id", :unique => true
+  add_index "groups_leaders", ["group_id"], :name => "index_groups_leaders_on_group_id"
+  add_index "groups_leaders", ["leader_id"], :name => "index_groups_leaders_on_leader_id"
+
+  create_table "groups_volunteers", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "volunteer_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "groups_volunteers", ["group_id", "volunteer_id"], :name => "index_groups_volunteers_on_group_id_and_volunteer_id", :unique => true
+  add_index "groups_volunteers", ["group_id"], :name => "index_groups_volunteers_on_group_id"
+  add_index "groups_volunteers", ["volunteer_id"], :name => "index_groups_volunteers_on_volunteer_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",     :null => false

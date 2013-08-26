@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  charity: 
+  name: MyString
+  location: MyString
+  email: MyString
+  groups_leaders: 
+  groups_volunteers: 
+
+two:
+  charity: 
+  name: MyString
+  location: MyString
+  email: MyString
+  groups_leaders: 
+  groups_volunteers: 
