@@ -24,7 +24,7 @@ volunteer_index = 1
 
 # Make test Groups and events by nested loops
 # Loop through groups
-["Foodcycle", "Oxfam", "Unicef", "HackneyPirates", "Street Doctors", "Chayn", "Student Funder", "MakeSense"].each do |n|
+["Foodcycle", "Oxfam", "Unicef", "HackneyPirates", "StreetDoctors", "Chayn", "Student Funder", "MakeSense"].each do |n|
     group = Group.new(email: "test_charity_email_#{n}@gmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "#{n}", website: "#{n}.com", phone: "0790355555#{n}")
     group.save
     (rand(1..3)).times do |volunteer_num|

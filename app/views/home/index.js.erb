@@ -1,0 +1,5 @@
+$('#events').html('<%= escape_javascript render(@events) %>');
+$('#events_paginator').html('<%= escape_javascript(paginate(@events, :remote => true).to_s) %>');
+
+$('#groups').html('<%= escape_javascript render(@groups) %>');
+$('#groups_paginator').html('<%= escape_javascript(paginate(@groups, :remote => true).to_s) %>');

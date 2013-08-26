@@ -9,7 +9,7 @@ gem 'pg'
 gem 'devise'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
-
+gem 'kaminari'
 
 group :development do
   gem 'pry-rails'

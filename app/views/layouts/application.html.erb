@@ -8,6 +8,21 @@
 </head>
 <body>
 
+  <header>
+    <nav>
+        <%= link_to "Vapp", root_path %>
+          <% if current_user %>
+            <%= "Hello #{current_user.firstname}."%>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% else %>
+              <%= link_to "Register", new_user_registration_path%>
+              <%= link_to "Sign in", new_user_session_path%>
+              <%= link_to "Forgot your password?", new_user_password_path%>
+          <% end %>
+
+    </nav>
+  </header>
+
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
 
