@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions
+  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions, :latitude, :longitude
 
   # ASSOCIATIONS
   has_many :events_volunteers, dependent: :destroy
