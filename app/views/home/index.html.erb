@@ -14,10 +14,31 @@
   <tbody>
 </table>
 
-
 <div id="events_paginator">
   <%= paginate @events, :remote => true %>
 </div>
+
+<% if current_user %>
+  <h2>Your Events</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    <thead>
+    <tbody id="user_events">
+      <%= render @user_events %>
+    <tbody>
+  </table>
+
+
+  <div id="user_events_paginator">
+    <%= paginate @user_events, :remote => true %>
+  </div>
+<% end %>
+
 
 <h2>Groups</h2>
 <table>
