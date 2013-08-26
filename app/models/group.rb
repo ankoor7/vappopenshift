@@ -6,5 +6,5 @@ class Group < ActiveRecord::Base
   has_many :leaders, through: :groups_leaders, foreign_key: :leader_id
   has_many :volunteers, through: :groups_volunteers, foreign_key: :volunteer_id
 
-  attr_accessible :email, :location, :name, :phone, :website
+  attr_accessible :email, :location, :name, :phone, :website, :description
 end

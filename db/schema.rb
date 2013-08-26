@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826102106) do
+ActiveRecord::Schema.define(:version => 20130826132340) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130826102106) do
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "charity_id"
+    t.integer  "group_id"
     t.string   "name"
     t.string   "location"
     t.integer  "number_volunteers"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130826102106) do
     t.integer  "groups_volunteers_id"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.text     "description"
   end
 
   add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"

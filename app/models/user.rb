@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :groups_volunteers, dependent: :destroy, foreign_key: :volunteer_id
   has_many :groups, through: :groups_volunteers
   has_many :groups_leaders, dependent: :destroy, foreign_key: :leader_id
-  has_many :led_groups, through: :groups_leaders, source: :groups
+  has_many :led_groups, through: :groups_leaders, source: :group
 
   belongs_to :charity
 
