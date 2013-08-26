@@ -9,7 +9,14 @@ class User < ActiveRecord::Base
   attr_accessible :role, :firstname, :lastname, :phone, :t_and_c, :email, :password, :password_confirmation, :remember_me
 
   # ASSOCIATIONS
-  has_and_belongs_to_many :events
+  # has_and_belongs_to_many :events
+  has_many :events_volunteers, dependent: :destroy, foreign_key: :volunteer_id
+  has_many :events, through: :events_volunteers
+  has_many :groups_volunteers, dependent: :destroy, foreign_key: :volunteer_id
+  has_many :groups, through: :groups_volunteers
+  has_many :groups_leaders, dependent: :destroy, foreign_key: :leader_id
+  has_many :led_groups, through: :groups_leaders, source: :groups
+
   belongs_to :charity
 
   # VALIDATIONS

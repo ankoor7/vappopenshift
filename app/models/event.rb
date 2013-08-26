@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   # ASSOCIATIONS
   has_many :events_volunteers, dependent: :destroy
-  has_many :volunteers, through: :events_volunteers, source: :volunteer_id
+  has_many :volunteers, through: :events_volunteers
   belongs_to :group
 
   # VALIDATIONS
