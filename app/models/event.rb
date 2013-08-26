@@ -14,5 +14,6 @@ class Event < ActiveRecord::Base
   validates :number_volunteers, presence: true
 
 
-
+scope :by_date, -> { order('date') }
+scope :available_events, lambda { |user|where("id NOT IN (?)", user.event_ids) }
 end

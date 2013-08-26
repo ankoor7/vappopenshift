@@ -28,6 +28,6 @@ class User < ActiveRecord::Base
     message: "Please check the phone number you entered" }
   validates :t_and_c, presence: true
 
-
+  scope :by_date, -> {order('date')}
 
 end
