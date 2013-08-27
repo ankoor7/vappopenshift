@@ -1,5 +1,5 @@
 <h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
 <h2>Upcoming Events</h2>
 <table>
   <thead>
@@ -10,12 +10,12 @@
     </tr>
   <thead>
   <tbody id="events">
-    <%= render @events %>
+    <%= render partial: "shared/event_summary", locals: {events: @events} %>
   <tbody>
 </table>
 
 <div id="events_paginator">
-  <%= paginate @events, :remote => true %>
+  <%= paginate @events, :remote => true, :param_name => "events_page" %>
 </div>
 
 <% if current_user %>
@@ -29,13 +29,13 @@
       </tr>
     <thead>
     <tbody id="user_events">
-      <%= render @user_events %>
+    <%= render partial: "shared/event_summary", locals: {events: @user_events} %>
     <tbody>
   </table>
 
 
   <div id="user_events_paginator">
-    <%= paginate @user_events, :remote => true %>
+    <%= paginate @user_events, :remote => true, :param_name => "user_events_page"  %>
   </div>
 <% end %>
 
@@ -50,13 +50,13 @@
     </tr>
   <thead>
   <tbody id="groups">
-    <%= render @groups %>
+    <%= render partial: "shared/group_summary", locals: {groups: @groups} %>
   <tbody>
 </table>
 
 
 <div id="groups_paginator">
-  <%= paginate @groups, :remote => true %>
+  <%= paginate @groups, :remote => true, :param_name => "groups_page" %>
 </div>
 
 

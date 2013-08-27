@@ -1,5 +1,17 @@
 Vapp::Application.routes.draw do
 
+  get "events/index"
+
+  get "events/show"
+
+  get "events/edit"
+
+  get "events/update"
+
+  get "events/new"
+
+  get "events/create"
+
   devise_for :users
 
   root :to => "home#index"
