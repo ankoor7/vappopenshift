@@ -10,6 +10,7 @@ gem 'devise'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'cancan'
 gem 'kaminari'
+gem "geocoder"
 
 group :development do
   gem 'pry-rails'

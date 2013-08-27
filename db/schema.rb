@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130826132340) do
+ActiveRecord::Schema.define(:version => 20130827130909) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(:version => 20130826132340) do
     t.text     "special_instructions"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
-    t.string   "latitude"
-    t.string   "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "events_volunteers", :force => true do |t|
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20130826132340) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.text     "description"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
   add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"

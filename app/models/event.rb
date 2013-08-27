@@ -6,6 +6,10 @@ class Event < ActiveRecord::Base
   has_many :volunteers, through: :events_volunteers
   belongs_to :group
 
+  # GEOCODER SETTINGS
+  geocoded_by :location
+  after_validation :geocode
+
   # VALIDATIONS
   validates :date, presence: true
   validates :description, presence: true
