@@ -6,6 +6,6 @@
   .address
     %h3= @event.location
 
-  .map= gmaps({ map_options: { auto_adjust:  true, auto_zoom:     true  }, markers: { data: @eventmap } })
+  .map= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } })
 
 

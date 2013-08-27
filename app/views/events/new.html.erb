@@ -1,2 +1,6 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.erb</p>
+<h1>New Events</h1>
+
+<div class="form_container">
+  <%= render 'form', event: @event %>
+</div>
+<%= link_to 'Back', root_path %>

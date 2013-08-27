@@ -14,6 +14,7 @@ gem "geocoder"
 gem 'gmaps4rails'
 gem "haml-rails"
 gem 'thin'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'pry-rails'

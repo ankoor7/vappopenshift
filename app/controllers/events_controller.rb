@@ -15,14 +15,14 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-
+    @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)
     respond_to do |format|
-      if @cheer_up.update_attributes(params[:cheer_up])
-        format.html { redirect_to @cheer_up, notice: 'Cheer up was successfully updated.' }
+      if @event.update_attributes(params[:event])
+        format.html { redirect_to @event, notice: 'Your event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @cheer_up.errors, status: :unprocessable_entity }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -33,9 +33,10 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)
     respond_to do |format|
       if @event.save
-        format.html { redirect_to home_path, notice: 'Your event is ready for volunteers.' }
+        format.html { redirect_to root_path, notice: 'Your event is ready for volunteers.' }
         format.json { render json: @event, status: :created, location: @event }
       else
         format.html { render action: "new" }
