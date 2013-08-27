@@ -12,6 +12,8 @@ gem 'cancan'
 gem 'kaminari'
 gem "geocoder"
 gem 'gmaps4rails'
+gem "haml-rails"
+gem 'thin'
 
 group :development do
   gem 'pry-rails'

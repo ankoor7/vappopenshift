@@ -1,0 +1,11 @@
+.event_listing
+  %h1.name= @event.name
+  %p.description= @event.description
+
+.event_sidebar
+  .address
+    %h3= @event.location
+
+  .map= gmaps({ map_options: { auto_adjust:  true, auto_zoom:     true  }, markers: { data: @eventmap } })
+
+

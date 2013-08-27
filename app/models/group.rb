@@ -12,6 +12,9 @@ class Group < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode
 
+  # gmaps4rails setting
+  acts_as_gmappable
+
   # VALIDATIONS
   validates :description, presence: true
   validates :location, presence: true
@@ -19,5 +22,9 @@ class Group < ActiveRecord::Base
   validates :phone, presence: true, uniqueness: true
   validates :website, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
+
+  def gmaps4rails_address
+    "#{self.location}"
+  end
 
 end
