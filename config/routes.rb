@@ -1,16 +1,6 @@
 Vapp::Application.routes.draw do
 
-  get "events/index"
-
-  get "events/show"
-
-  get "events/edit"
-
-  get "events/update"
-
-  get "events/new"
-
-  get "events/create"
+  resources :events
 
   devise_for :users
 
