@@ -1,7 +1,6 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
-
   end
 
   def show
@@ -22,6 +21,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(params[:group])
+    @group.leaders << current_user
     respond_to do |format|
       if @group.save
         format.html { redirect_to root_path, notice: 'Your group is ready for events.' }

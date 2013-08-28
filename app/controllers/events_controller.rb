@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(params[:event])
+    @event.group = current_user.group
     @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)
     respond_to do |format|
       if @event.save
