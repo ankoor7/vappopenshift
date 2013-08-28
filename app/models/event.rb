@@ -27,6 +27,9 @@ scope :by_date, -> { order('date') }
 scope :available_events, lambda { |user|where("id NOT IN (?)", user.event_ids) }
 
 
+  def unregister(user)
+    volunteers.delete(user) if volunteer_ids.include? user.id
+  end
 
   def gmaps4rails_address
     "#{self.location}"

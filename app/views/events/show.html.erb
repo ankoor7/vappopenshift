@@ -1,12 +1,25 @@
 <div class='event_listing'>
   <h1 class='name'><%=@event.name%></h1>
   <p class='description' ><%= @event.description%></p>
+
+  <div class="form_container">
+    <% if @event.volunteer_ids.include? current_user.id %>
+      <%= form_tag(unregister_events_volunteer_path(@event)) do %>
+        <%= submit_tag   "Unregister" %>
+      <% end %>
+    <% else %>
+      <%= form_tag(register_events_volunteer_path(@event)) do %>
+        <%= submit_tag   "Sign-up" %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+
 <div class='event_sidebar'>
   <div class='address'>
     <h3><%= @event.location %></h3>
 
-  <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
+    <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
+    </div>
   </div>
-
-
+</div>

@@ -2,6 +2,19 @@ Vapp::Application.routes.draw do
 
   resources :groups
   resources :events
+  resources :events_volunteers do
+    member do
+      post 'register'
+      post 'unregister'
+    end
+  end
+
+  # resources :events do
+  #   member do
+  #     post 'sign_up_volunteer'
+  #   end
+  # end
+
 
   devise_for :users
 
