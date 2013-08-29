@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130827143108) do
+ActiveRecord::Schema.define(:version => 20130829080949) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130827143108) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
+    t.string   "causes"
   end
 
   create_table "events_volunteers", :force => true do |t|
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130827143108) do
     t.float    "longitude"
     t.float    "latitude"
     t.boolean  "gmaps"
+    t.string   "causes"
   end
 
   add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"
@@ -90,6 +92,23 @@ ActiveRecord::Schema.define(:version => 20130827143108) do
   add_index "groups_volunteers", ["group_id", "volunteer_id"], :name => "index_groups_volunteers_on_group_id_and_volunteer_id", :unique => true
   add_index "groups_volunteers", ["group_id"], :name => "index_groups_volunteers_on_group_id"
   add_index "groups_volunteers", ["volunteer_id"], :name => "index_groups_volunteers_on_volunteer_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",     :null => false

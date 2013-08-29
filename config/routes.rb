@@ -1,5 +1,7 @@
 Vapp::Application.routes.draw do
 
+  get "users/dashboard"
+
   resources :groups
   resources :events
   resources :events_volunteers do
@@ -9,14 +11,9 @@ Vapp::Application.routes.draw do
     end
   end
 
-  # resources :events do
-  #   member do
-  #     post 'sign_up_volunteer'
-  #   end
-  # end
-
-
-  devise_for :users
+  devise_for :users do
+    get "/dashboard", :to => "users#dashboard"
+  end
 
   root :to => "home#index"
 

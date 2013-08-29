@@ -1,0 +1,32 @@
+<% groups.each do |group| %>
+    <h2><%= group.name %></h2>
+      <%= link_to 'Edit', edit_group_path(group) %>
+    <p><%= group.description %></p>
+  </tr>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Description</th>
+        <th>Volunteers</th>
+        <th>Empty places</th>
+        <th></th>
+        <th></th>
+      </tr>
+    <thead>
+    <tbody id="events">
+    <% group.events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.description %></td>
+        <td><%= event.volunteers.count %></td>
+        <td><%= event.number_volunteers - event.volunteers.count %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %> </td>
+        <td><%= link_to 'Delete', event, method: :delete %> </td>
+      </tr>
+    <% end %>
+  <tbody>
+  </table>
+
+<% end %>

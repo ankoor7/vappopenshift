@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions, :latitude, :longitude
+  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions, :latitude, :longitude, :causes, :cause_list
 
 
 
@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
   has_many :events_volunteers, dependent: :destroy
   has_many :volunteers, through: :events_volunteers
   belongs_to :group
+
+  # CAUSES USING ACTS-AS-TAGGABLE-ON GEM
+  acts_as_taggable_on :causes
 
   # GEOCODER SETTINGS
   geocoded_by :location

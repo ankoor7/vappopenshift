@@ -6,11 +6,14 @@ class Group < ActiveRecord::Base
   has_many :leaders, through: :groups_leaders, foreign_key: :leader_id
   has_many :volunteers, through: :groups_volunteers, foreign_key: :volunteer_id
 
-  attr_accessible :email, :location, :name, :phone, :website, :description
+  attr_accessible :email, :location, :name, :phone, :website, :description, :causes
 
   # GEOCODER SETTINGS
   geocoded_by :location
   after_validation :geocode
+
+  # CAUSES USING ACTS-AS-TAGGABLE-ON GEM
+  acts_as_taggable_on :causes
 
   # gmaps4rails setting
   acts_as_gmappable

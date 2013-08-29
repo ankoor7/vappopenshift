@@ -1,0 +1,9 @@
+<h1>Users#dashboard</h1>
+<p>Find me in app/views/users/dashboard.html.erb</p>
+
+    <%= render partial: "shared/group_dashboard", locals: {groups: @groups} %>
+
+
+<div id="groups_paginator">
+  <%= paginate @groups, :param_name => "groups_page" %>
+</div>

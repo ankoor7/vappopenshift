@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   def index
-
-
     @groups = Group.page(params[:groups_page]).per(3)
 
     if current_user
@@ -10,7 +8,5 @@ class HomeController < ApplicationController
     else
       @events = Event.by_date.page(params[:events_page]).per(10)
     end
-
-
   end
 end

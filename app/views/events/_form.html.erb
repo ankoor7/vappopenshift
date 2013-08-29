@@ -28,6 +28,10 @@
     <%= f.text_field :location, :class => "span6" %>
   </div>
   <div class="field">
+    <%= f.label "Causes" %><br />
+    <%= f.text_field :cause_list, :class => "span6" %>
+  </div>
+  <div class="field">
     <%= f.label "Number of volunteers needed" %><br />
     <%= f.select :number_volunteers, ((1..30).map {|i| [i,i] }), :class => "span2" %>
   </div>

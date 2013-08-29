@@ -1,7 +1,10 @@
 <div class='event_listing'>
   <h1 class='name'><%=@event.name%></h1>
   <p class='description' ><%= @event.description%></p>
-
+    <div class='causes'>
+      <h2>Causes</h2>
+      <p><%= @event.cause_list.join(', ') %></p>
+    </div>
   <div class="form_container">
     <% if @event.volunteer_ids.include? current_user.id %>
       <%= form_tag(unregister_events_volunteer_path(@event)) do %>

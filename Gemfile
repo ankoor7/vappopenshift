@@ -14,6 +14,7 @@ gem "geocoder"
 gem 'gmaps4rails'
 gem 'thin'
 gem 'jquery-ui-rails'
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'pry-rails'
