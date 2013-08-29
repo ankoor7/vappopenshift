@@ -1,7 +1,5 @@
 Vapp::Application.routes.draw do
 
-  get "users/dashboard"
-
   resources :groups
   resources :events
   resources :events_volunteers do
@@ -13,6 +11,7 @@ Vapp::Application.routes.draw do
 
   devise_for :users do
     get "/dashboard", :to => "users#dashboard"
+    get "/profile", :to => "users#edit_profile"
   end
 
   root :to => "home#index"
