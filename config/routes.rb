@@ -1,7 +1,10 @@
 Vapp::Application.routes.draw do
 
-  resources :groups
-  resources :events
+  resources :groups do
+    resources :events, only: [:new, :create]
+  end
+  resources :events, only: [:index, :show, :edit, :update]
+
   resources :events_volunteers do
     member do
       post 'register'
@@ -11,7 +14,6 @@ Vapp::Application.routes.draw do
 
   devise_for :users do
     get "/dashboard", :to => "users#dashboard"
-    get "/profile", :to => "users#edit_profile"
   end
 
   root :to => "home#index"

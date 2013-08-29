@@ -15,6 +15,9 @@ gem 'gmaps4rails'
 gem 'thin'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on'
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
+gem 'rmagick'
 
 group :development do
   gem 'pry-rails'

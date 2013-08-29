@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions, :latitude, :longitude, :causes, :cause_list
+  attr_accessible :date, :description, :location, :name, :number_volunteers, :special_instructions, :latitude, :longitude, :causes, :cause_list, :image
 
 
 
@@ -17,6 +17,9 @@ class Event < ActiveRecord::Base
 
   # gmaps4rails setting
   acts_as_gmappable
+
+  # Image uploader
+  mount_uploader :image, ImageUploader
 
   # VALIDATIONS
   validates :date, presence: true
@@ -36,6 +39,10 @@ scope :available_events, lambda { |user|where("id NOT IN (?)", user.event_ids) }
 
   def gmaps4rails_address
     "#{self.location}"
+  end
+
+  def space_available?
+    volunteers.count < number_volunteers
   end
 
 end

@@ -1,7 +1,6 @@
 <% events.each do |event| %>
   <tr>
-    <td><%= event.name %></td>
-    <td><%= event.date %></td>
-    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to event.name, event %></td>
+    <td><%= event.date.strftime("%m/%d/%Y at %I:%M%P")  %></td>
   </tr>
 <% end %>

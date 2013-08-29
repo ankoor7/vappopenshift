@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :role, :firstname, :lastname, :phone, :t_and_c, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :role, :firstname, :lastname, :phone, :t_and_c, :email, :password, :password_confirmation, :remember_me, :image
+
+  # Image uploader
+  mount_uploader :image, ImageUploader
 
   # ASSOCIATIONS
-
   has_many :events_volunteers, dependent: :destroy, foreign_key: :volunteer_id
   has_many :events, through: :events_volunteers
   has_many :groups_volunteers, dependent: :destroy, foreign_key: :volunteer_id
@@ -28,6 +30,10 @@ class User < ActiveRecord::Base
     message: "Please check the phone number you entered" }
   validates :t_and_c, presence: true
 
-  scope :by_date, -> {order('date')}
+  # scope :by_date, -> {order('date')}
+
+  def registered_for?(event)
+    event.volunteer_ids.include? self.id
+  end
 
 end

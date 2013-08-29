@@ -1,19 +1,22 @@
 <div class='event_listing'>
   <h1 class='name'><%=@event.name%></h1>
   <p class='description' ><%= @event.description%></p>
+  <div><%= image_tag @event.image.thumb.url unless @event.image.thumb.url.nil? %></div>
     <div class='causes'>
       <h2>Causes</h2>
       <p><%= @event.cause_list.join(', ') %></p>
     </div>
   <div class="form_container">
-    <% if @event.volunteer_ids.include? current_user.id %>
-      <%= form_tag(unregister_events_volunteer_path(@event)) do %>
-        <%= submit_tag   "Unregister" %>
-      <% end %>
-    <% else %>
-      <%= form_tag(register_events_volunteer_path(@event)) do %>
-        <%= submit_tag   "Sign-up" %>
-      <% end %>
+
+    <% case %>
+      <% when current_user.registered_for?(@event) %>
+        <%= form_tag(unregister_events_volunteer_path(@event)) do %>
+          <%= submit_tag   "Unregister" %>
+        <% end %>
+      <% when @event.space_available? && current_user.registered_for?(@event) == false %>
+        <%= form_tag(register_events_volunteer_path(@event)) do %>
+          <%= submit_tag   "Sign-up" %>
+        <% end %>
     <% end %>
   </div>
 </div>

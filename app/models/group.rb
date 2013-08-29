@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   has_many :leaders, through: :groups_leaders, foreign_key: :leader_id
   has_many :volunteers, through: :groups_volunteers, foreign_key: :volunteer_id
 
-  attr_accessible :email, :location, :name, :phone, :website, :description, :causes
+  attr_accessible :email, :location, :name, :phone, :website, :description, :causes, :logo, :cause_list
 
   # GEOCODER SETTINGS
   geocoded_by :location
@@ -17,6 +17,9 @@ class Group < ActiveRecord::Base
 
   # gmaps4rails setting
   acts_as_gmappable
+
+  # Image uploader
+  mount_uploader :logo, ImageUploader
 
   # VALIDATIONS
   validates :description, presence: true

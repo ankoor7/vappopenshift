@@ -16,7 +16,6 @@
           <% if current_user %>
             <%= "Hello #{current_user.firstname}."%>
             <%= link_to "Start a group", new_group_path %>
-            <%= link_to "Create an event", new_event_path %>
             <%= link_to "Dashboard", dashboard_path %>
             <%= link_to "Account", edit_user_registration_path %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete %>

@@ -20,8 +20,12 @@
     <%= f.text_area :description, :class => "span6", rows: 4 %>
   </div>
   <div class="field">
-    <%= f.label :causes %><br />
-    <%= f.text_field :causes, :class => "span6" %>
+    <%= f.label :logo %><br />
+    <%= f.file_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label "Causes" %><br />
+    <%= f.text_field :cause_list, :class => "span6" %>
   </div>
   <div class="field">
     <%= f.label "Address" %><br />

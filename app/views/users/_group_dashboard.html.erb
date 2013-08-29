@@ -1,7 +1,8 @@
 <% groups.each do |group| %>
     <h2><%= group.name %></h2>
       <%= link_to 'Edit', edit_group_path(group) %>
-    <p><%= group.description %></p>
+      <%= link_to 'Add an event', new_group_event_path(group) %>
+      <p><%= group.description %></p>
   </tr>
 
   <table>
