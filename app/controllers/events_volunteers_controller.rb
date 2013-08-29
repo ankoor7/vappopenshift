@@ -28,13 +28,4 @@ class EventsVolunteersController < ApplicationController
     end
   end
 
-
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end
