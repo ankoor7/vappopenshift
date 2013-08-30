@@ -19,7 +19,7 @@
     <tbody id="events">
     <% group.events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
+        <td><%= link_to event.name, event %></td>
         <td><%= event.description %></td>
         <td><%= event.volunteers.count %></td>
         <td><%= event.number_volunteers - event.volunteers.count %></td>
