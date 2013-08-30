@@ -9,4 +9,10 @@ class EventMailer < ActionMailer::Base
     end
   end
 
+  def event_approaching(event, user)
+    @event = event
+    @user = user
+    mail(:to => user.email, :subject => "#{event.name} is coming up!")
+  end
+
 end

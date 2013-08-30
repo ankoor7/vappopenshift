@@ -31,6 +31,9 @@ class Event < ActiveRecord::Base
 
 scope :by_date, -> { order('date') }
 scope :available_events, lambda { |user|where("id NOT IN (?)", user.event_ids) }
+scope :approaching_events, lambda { where(date: DateTime.now+2.days..DateTime.now+3.days) }
+scope :approaching_events_email_not_sent, lambda { where(welcome_email_sent: false) }
+
 
 
   def unregister(user)

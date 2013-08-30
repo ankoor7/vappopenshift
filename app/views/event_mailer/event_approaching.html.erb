@@ -6,6 +6,9 @@
   </head>
   <body>
     <p>Hello <%= @user.firstname %>, </p>
-    <p> Unfortunately, the <%= @event.name %> event, on <%= @event.date.strftime("%m/%d/%Y at %I:%M%P")  %> was cancelled. </p>
+    <p> The <%= @event.name %> event is coming up soon. </p>
+    <p> Time: <%= @event.date.strftime("%I:%M%P")  %> </p>
+    <p> Date: <%= @event.date.strftime("%m/%d/%Y")  %></p>
+    <p> Location: <%= @event.location  %></p>
   </body>
   </html>
