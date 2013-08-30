@@ -36,4 +36,7 @@ class User < ActiveRecord::Base
     event.volunteer_ids.include? self.id
   end
 
+  def attending_events?
+    events.count > 0
+  end
 end
