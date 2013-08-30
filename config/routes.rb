@@ -3,7 +3,7 @@ Vapp::Application.routes.draw do
   resources :groups do
     resources :events, only: [:new, :create]
   end
-  resources :events, only: [:index, :show, :edit, :update]
+  resources :events, only: [:index, :show, :edit, :update, :destroy]
 
   resources :events_volunteers do
     member do

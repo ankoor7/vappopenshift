@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
 
   # ASSOCIATIONS
-  has_many :events_volunteers, dependent: :destroy
+  has_many :events_volunteers  # Moved the dependency removal to the Event Observer - before_destroy callback ", dependent: :destroy"
   has_many :volunteers, through: :events_volunteers
   belongs_to :group
 

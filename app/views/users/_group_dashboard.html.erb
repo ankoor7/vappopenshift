@@ -3,8 +3,9 @@
       <%= link_to 'Edit', edit_group_path(group) %>
       <%= link_to 'Add an event', new_group_event_path(group) %>
       <p><%= group.description %></p>
-  </tr>
 
+
+  <% if group.events.count > 0 %>
   <table>
     <thead>
       <tr>
@@ -24,10 +25,12 @@
         <td><%= event.volunteers.count %></td>
         <td><%= event.number_volunteers - event.volunteers.count %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %> </td>
-        <td><%= link_to 'Delete', event, method: :delete %> </td>
+        <td><%= link_to 'Delete', event, method: :delete, :confirm => 'Are you sure?' %> </td>
       </tr>
     <% end %>
   <tbody>
   </table>
-
+  <% else %>
+    <p>There are no events for <%= group.name %>. <%= link_to 'Add an event', new_group_event_path(group) %> </p>
+  <% end %>
 <% end %>
