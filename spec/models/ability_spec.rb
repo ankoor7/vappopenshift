@@ -33,9 +33,9 @@ describe Ability do
     @group2.save
   end
 
-  let(:ability) { Ability.new(@user1) }
 
   describe "user" do
+  let(:ability) { Ability.new(@user1) }
     it "can manage their accounts" do
       ability.should be_able_to(:manage, @user1)
     end
@@ -62,9 +62,10 @@ describe Ability do
   end
 
   describe "guest" do
+  let(:ability) { Ability.new(@guest) }
     it "can read groups and events" do
-      ability.should be_able_to(:read, @group1)
-      ability.should be_able_to(:read, @event1)
+      ability.should be_able_to(:show, @group1)
+      ability.should be_able_to(:show, @event1)
     end
 
     it "cannot edit, update destroy create groups" do
