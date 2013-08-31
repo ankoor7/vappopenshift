@@ -18,8 +18,7 @@ gem 'acts-as-taggable-on'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
 gem 'rmagick'
-gem "cancan"
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
 
 group :development do
   gem 'pry-rails'

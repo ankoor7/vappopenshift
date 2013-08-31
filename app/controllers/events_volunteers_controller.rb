@@ -2,7 +2,7 @@ class EventsVolunteersController < ApplicationController
 
   def register
     @event = Event.find(params[:id])
-    @event.volunteers << current_user
+    @event.register(current_user)
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Thanks for volunteering!' }

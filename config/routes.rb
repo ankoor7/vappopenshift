@@ -12,7 +12,7 @@ Vapp::Application.routes.draw do
     end
   end
 
-  devise_scope :user do
+  devise_for :user do
     get "/dashboard", :to => "users#dashboard"
   end
 

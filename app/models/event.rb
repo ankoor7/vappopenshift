@@ -37,7 +37,19 @@ scope :approaching_events_email_not_sent, lambda { where(welcome_email_sent: fal
 
 
   def unregister(user)
-    volunteers.delete(user) if volunteer_ids.include? user.id
+    if volunteer_ids.include? user.id
+      volunteers.delete(user)
+    else
+      errors.add(:register, "user is not registered for this event")
+    end
+  end
+
+  def register(user)
+    if volunteers.count <= number_volunteers
+      volunteers << user
+    else
+      errors.add(:unregister, "the event is full")
+    end
   end
 
   def gmaps4rails_address
