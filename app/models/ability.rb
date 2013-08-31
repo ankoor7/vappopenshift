@@ -13,7 +13,7 @@ class Ability
         # check if the user leads the group which the event is for
         user.led_group_ids.include?(event.group_id)
       end
-      can :manage, :user, :user_id => user.id
+      can :manage, User, :id => user.id
     else
       # check guests can see groups and events
       can :show, Group
