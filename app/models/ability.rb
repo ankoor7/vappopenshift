@@ -2,18 +2,18 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    @user = user
+    user = user
     # check if you've got a registered user
-    if !@user.id.nil?
+    if !user.id.nil?
       can :manage, Group do |group|
         # check if the user leads the group
-        @user.led_group_ids.include?(group.id)
+        user.led_group_ids.include?(group.id)
       end
       can :manage, Event do |event|
         # check if the user leads the group which the event is for
-        @user.led_group_ids.include?(event.group_id)
+        user.led_group_ids.include?(event.group_id)
       end
-      can :manage, :user, :user_id => @user.id
+      can :manage, :user, :user_id => user.id
     else
       # check guests can see groups and events
       can :show, Group
