@@ -5,8 +5,10 @@ describe Event do
         @user1 = User.new(email: "test@gmail.com", firstname: "Arthur", lastname: "McLovin", phone: "07903555555", password: "password", password_confirmation: "password", t_and_c: true)
         @user1.save
         @event = Event.new(date: (DateTime.now + rand(15)), description: "A test event ", location: "9 Back Hill, London, N1", name: "Event", number_volunteers: 9)
+        @event.stub(:geocode).and_return([1,1])
         @event.save
         @group = Group.new(email: "test@gmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "Test", website: "test.com", phone: "07903555555")
+        @group.stub(:geocode).and_return([1,1])
         @group.save
   end
 
