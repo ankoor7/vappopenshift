@@ -42,6 +42,7 @@ group :test do
   gem 'awesome_print'
   gem "database_cleaner"
   gem "shoulda"
+  gem "mocha"
   # gem "capybara"
 end
 

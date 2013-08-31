@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  # load_and_authorize_resource
+
   def index
     @groups = Group.page(params[:groups_page]).per(3)
 
