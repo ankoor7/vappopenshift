@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     user = user
     # check if you've got a registered user
-    if !user.id.nil?
+    if user.id != nil
       can :manage, Group do |group|
         # check if the user leads the group
         user.led_group_ids.include?(group.id)

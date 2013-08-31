@@ -6,10 +6,10 @@ describe Ability do
     # Make instances
     @guest = User.new
     @user1 = User.new(email: "test@gmail.com", firstname: "Arthur", lastname: "McLovin", phone: "07903555555", password: "password", password_confirmation: "password", t_and_c: true, )
-    @event1 = Event.new(date: (DateTime.now + rand(15)), description: "A test event ", location: "9 Back Hill, London, N1", name: "Event", number_volunteers: 9)
+    @event1 = Event.new(date: DateTime.now, description: "A test event ", location: "9 Back Hill, London, N1", name: "Event", number_volunteers: 9)
     @group1 = Group.new(email: "test@gmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "Test", website: "test.com", phone: "07903555555")
     @user2 = User.new(email: "test2@gmail.com", firstname: "Arthur2", lastname: "McLovin", phone: "07903555552", password: "password", password_confirmation: "password", t_and_c: true)
-    @event2 = Event.new(date: (DateTime.now + rand(15)), description: "A test event ", location: "9 Back Hill, London, N1", name: "Event", number_volunteers: 9)
+    @event2 = Event.new(date: DateTime.now, description: "A test event ", location: "9 Back Hill, London, N1", name: "Event", number_volunteers: 9)
     @group2 = Group.new(email: "test2@gmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "Test2", website: "test2.com", phone: "07903555552")
     # Associate all the instances
     @group1.events << @event1
