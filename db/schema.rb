@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830145107) do
+ActiveRecord::Schema.define(:version => 20130901092956) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -70,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20130830145107) do
     t.boolean  "gmaps"
     t.string   "causes"
     t.string   "logo"
+    t.string   "video"
+    t.string   "splash_image"
+    t.string   "video_html"
+    t.string   "splash_image_html"
   end
 
   add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"

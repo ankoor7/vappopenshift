@@ -1,6 +1,16 @@
-<% groups.each do |group| %>
-  <tr>
-    <td><%= link_to group.name, group %></td>
-    <td><%= group.description %></td>
-  </tr>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% groups.each do |group| %>
+      <tr>
+        <td><%= link_to group.name, group %></td>
+        <td><%= group.description %></td>
+      </tr>
+    <% end %>
+  <tbody>
+</table>

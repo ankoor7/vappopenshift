@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   load_and_authorize_resource
+  include AutoHtml
 
   def index
     @groups = Group.all

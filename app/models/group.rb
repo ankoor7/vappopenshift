@@ -6,7 +6,9 @@ class Group < ActiveRecord::Base
   has_many :leaders, through: :groups_leaders, foreign_key: :leader_id
   has_many :volunteers, through: :groups_volunteers, foreign_key: :volunteer_id
 
-  attr_accessible :email, :location, :name, :phone, :website, :description, :causes, :logo, :cause_list
+  attr_accessible :email, :location, :name, :phone, :website, :description, :causes, :logo, :cause_list, :splash_image, :video, :splash_image_html, :video_html
+
+  include AutoHtml
 
   # GEOCODER SETTINGS
   geocoded_by :location
@@ -31,6 +33,22 @@ class Group < ActiveRecord::Base
 
   def gmaps4rails_address
     "#{self.location}"
+  end
+
+  auto_html_for :video do
+    html_escape
+    image
+    youtube(:width => 400, :height => 250)
+    link :target => "_blank", :rel => "nofollow"
+    simple_format
+  end
+
+  auto_html_for :splash_image do
+    html_escape
+    image
+    flickr(:maxwidth => 1200)
+    link :target => "none", :rel => "nofollow"
+    simple_format
   end
 
 end

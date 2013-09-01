@@ -24,6 +24,14 @@
     <%= f.file_field :logo %>
   </div>
   <div class="field">
+    <%= f.label :splash_image %><br />
+    <%= f.text_field :splash_image, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label :video %><br />
+    <%= f.text_field :video, :class => "span6" %>
+  </div>
+  <div class="field">
     <%= f.label "Causes" %><br />
     <%= f.text_field :cause_list, :class => "span6" %>
   </div>

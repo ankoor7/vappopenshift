@@ -2,6 +2,8 @@ class HomeController < ApplicationController
   # load_and_authorize_resource
 
   def index
+    @search_events = @q.result(distinct: true)
+    # @search_events = @q.result(:distinct => true)
     @groups = Group.page(params[:groups_page]).per(3)
 
     if current_user && current_user.attending_events?
@@ -11,4 +13,10 @@ class HomeController < ApplicationController
       @events = Event.by_date.page(params[:events_page]).per(10)
     end
   end
+
+  def search
+    index
+    render :index
+  end
+
 end

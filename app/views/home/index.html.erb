@@ -1,17 +1,9 @@
 <h1>Home#index</h1>
 
 <h2>Upcoming Events</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-    </tr>
-  <thead>
-  <tbody id="events">
+  <div  id="user_events">
     <%= render partial: "shared/event_summary", locals: {events: @events} %>
-  <tbody>
-</table>
+  </div>
 
 <div id="events_paginator">
   <%= paginate @events, :remote => true, :param_name => "events_page" %>
@@ -19,18 +11,9 @@
 
 <% if current_user && current_user.attending_events? %>
   <h2>Your Events</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Date</th>
-      </tr>
-    <thead>
-    <tbody id="user_events">
+  <div  id="user_events">
     <%= render partial: "shared/event_summary", locals: {events: @user_events} %>
-    <tbody>
-  </table>
-
+  </div>
 
   <div id="user_events_paginator">
     <%= paginate @user_events, :remote => true, :param_name => "user_events_page"  %>
@@ -39,18 +22,9 @@
 
 
 <h2>Groups</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  <thead>
-  <tbody id="groups">
+  <div  id="groups">
     <%= render partial: "shared/group_summary", locals: {groups: @groups} %>
-  <tbody>
-</table>
-
+  </div>
 
 <div id="groups_paginator">
   <%= paginate @groups, :remote => true, :param_name => "groups_page" %>
