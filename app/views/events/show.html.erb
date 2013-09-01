@@ -6,28 +6,35 @@
       <h2>Causes</h2>
       <p><%= @event.cause_list.join(', ') %></p>
     </div>
-  <div class="form_container">
 
-    <% case %>
-      <% when current_user.nil? %>
-          <%= link_to "Register with Vapp", new_user_registration_path%>
-      <% when current_user.registered_for?(@event) %>
-        <%= form_tag(unregister_events_volunteer_path(@event)) do %>
-          <%= submit_tag   "Unregister" %>
-        <% end %>
-      <% when @event.space_available? && current_user.registered_for?(@event) == false %>
-        <%= form_tag(register_events_volunteer_path(@event)) do %>
-          <%= submit_tag   "Sign-up" %>
-        <% end %>
-    <% end %>
-  </div>
+    <%= render partial: "shared/event_signup_or_register" %>
+
 </div>
+
+<% if current_user.can_see_attendees_of?(@event) %>
+<div>
+<h2>Volunteers</h2>
+<% case %>
+<% when @event.space_available? %>
+  <p>There's <%= pluralize(@event.remaining_spaces, "space") %> remaining </p>
+<% when @event.space_available? == false %>
+  <p> This event is full </p>
+<% end %>
+
+<% @event.volunteers.each do |volunteer| %>
+  <p><%= "#{volunteer.firstname} #{volunteer.lastname} " %></p>
+  <p><%= volunteer.phone %></p>
+<% end %>
+</div>
+<% end %>
 
 <div class='event_sidebar'>
   <div class='address'>
     <h3><%= @event.location %></h3>
 
     <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
-    </div>
+  </div>
+
+
   </div>
 </div>

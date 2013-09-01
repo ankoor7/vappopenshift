@@ -39,4 +39,9 @@ class User < ActiveRecord::Base
   def attending_events?
     events.count > 0
   end
+
+  def can_see_attendees_of?(event)
+    event.group.leader_ids.include? self.id
+  end
+
 end
