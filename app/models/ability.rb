@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user = user
+    user ||= User.new
     # check if you've got a registered user
     if user.id != nil
       can [:new, :create], Group
