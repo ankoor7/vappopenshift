@@ -7,10 +7,8 @@ class GroupsController < ApplicationController
   end
 
   def show
-    # Eager Load group with its events
-    # @group = Group.includes(:events).where(id: params[:id])
     @group = Group.find(params[:id])
-    @events = Event.where(group_id: params[:id])
+    @events = Event.where(group_id: params[:id]).by_date
     @groupmap = Group.find(params[:id]).to_gmaps4rails
   end
 

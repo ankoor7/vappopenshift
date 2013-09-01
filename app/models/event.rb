@@ -60,4 +60,9 @@ scope :approaching_events_email_not_sent, lambda { where(welcome_email_sent: fal
     volunteers.count < number_volunteers
   end
 
+  def remaining_spaces
+    number_volunteers - volunteers.count
+  end
+
+
 end
