@@ -1,0 +1,17 @@
+<% if current_user.can_see_attendees_of?(@event) %>
+<div>
+<h2>Volunteers</h2>
+<% case %>
+<% when @event.space_available? %>
+  <p>There's <%= pluralize(@event.remaining_spaces, "space") %> remaining </p>
+<% when @event.space_available? == false %>
+  <p> This event is full </p>
+<% end %>
+
+<% @event.volunteers.each do |volunteer| %>
+  <p><%= "#{volunteer.firstname} #{volunteer.lastname} " %></p>
+  <p><%= volunteer.phone %></p>
+<% end %>
+</div>
+<% end %>
+
