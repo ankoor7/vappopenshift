@@ -12,3 +12,5 @@
  *= require_tree .
  *= require jquery.ui.all
  */
+
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
