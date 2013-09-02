@@ -16,6 +16,10 @@ lastnames = ["Smith", "Westfield", "Hogan", "Skywalker", "Simpson", "Threadneedl
 
 addresses = ["15-17 New Street Square, Fetter Ln, London EC4A 3AP", "Broadgate Tower, 20 Primrose Street, London EC2A 2EW","3-7 Stamford St, London SE1 9NY", "29-31 Wellington St, Covent Garden, London WC2E 7DB", "79a Tottenham Court Rd, London W1T 4TD", "6 Dorset Square, London NW1 6QA", "Queen Marys Gardens, London", "115 New Cavendish St, London W1W 6UW", "Paramount House, 162-170 Wardour St, London W1F 8ZX", "2 Hogarth Rd, London, Earls Court, London, Greater London SW5 0PT"]
 
+group_slogan = "Helping the world get better"
+
+group_description = "Kale chips meh cardigan drinking vinegar. Helvetica pop-up umami, vinyl raw denim pour-over try-hard biodiesel gentrify hella ethnic whatever mustache salvia Godard. 3 wolf moon irony quinoa, asymmetrical PBR Truffaut sriracha YOLO mumblecore forage Williamsburg synth blog selfies High Life. Banjo disrupt Williamsburg fashion axe Etsy. Terry Richardson post-ironic mlkshk twee plaid. Narwhal twee drinking vinegar Blue Bottle, hashtag master cleanse letterpress Williamsburg try-hard tofu pork belly mixtape distillery 8-bit. Marfa gentrify Pitchfork +1 chia, yr messenger bag 90's readymade chillwave cornhole photo booth chambray keytar."
+
 group = nil
 event = nil
 user = nil
@@ -25,14 +29,52 @@ volunteer_index = 1
   # charity = Charity.new(email: "test_charity_emailgmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "The Charity", website: "test_charity.com", phone: "07903555555")
   # charity.save
 
+logos_path = "/public/pics/logos/"
+images_path = "/public/pics/images/"
+
+charities = {
+  foodcycle: "FoodCycle",
+  oxfam: "Oxfam",
+  unicef: "Unicef",
+  hackneypirates: "Hackney Pirates",
+  ytfn: "YTFN",
+  chayn: "Chayn",
+  studentfunder: "Student Funder",
+  makesense: "MakeSense"
+}
+
+videos = {
+  foodcycle: "http://www.youtube.com/watch?v=vqrRMFOOPf8",
+  oxfam: "http://www.youtube.com/watch?v=hkg9ADEIPXM",
+  unicef: "http://www.youtube.com/watch?v=NmmnciqOLQw",
+  hackneypirates: "http://www.youtube.com/watch?v=q8PXp3rujwg",
+  ytfn: "http://www.youtube.com/watch?v=1yaEdF7--E8",
+  chayn: "",
+  studentfunder: "",
+  makesense: "http://www.youtube.com/watch?v=VwegvObubhI"
+}
+
+splash_images = {
+  foodcycle: "http://www.flickr.com/photos/61527873@N05/5904837605",
+  oxfam: "http://www.flickr.com/photos/oxfam/9408920586/",
+  unicef: "http://www.flickr.com/photos/u10k/5043631738/lightbox/",
+  hackneypirates: "http://www.flickr.com/photos/34207052@N02/7995547490",
+  ytfn: "http://www.flickr.com/photos/45347326@N02/4661645806",
+  chayn: "",
+  studentfunder: "http://www.flickr.com/photos/58726828@N08/7154019121",
+  makesense: "http://www.flickr.com/photos/90045808@N06/8182975487"
+}
+
+
 # Make test Groups and events by nested loops
 # Loop through groups
-["Foodcycle", "Oxfam", "Unicef", "HackneyPirates", "StreetDoctors", "Chayn", "Student Funder", "MakeSense"].each do |n|
-    group = Group.new(email: "test_charity_email_#{n}@gmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: addresses[group_index], name: "#{n}", website: "#{n}.com", phone: "0790355555#{group_index}")
+charities.each do |k,v|
+    group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
+    # , splash_image: File.new(splash_images_path + k.to_s + ".jpg")
     group.save
     group_index += 1
     (rand(1..3)).times do |volunteer_num|
-      user = User.new(email: "test_leader_#{volunteer_index}@#{group.name}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
+      user = User.new(email: "test_leader_#{volunteer_index}@#{k}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
       user.save
 
       group.leaders << user
@@ -43,14 +85,14 @@ volunteer_index = 1
     # Loop through events
     (rand(4..6)).times do |event_num|
 
-      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16))
+      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
       event.group = group
       event.save
 
       # Add volunteers to events
 
       (rand(5..9)).times do |volunteer_num|
-        user = User.new(email: "test_user_#{volunteer_index}@#{group.name}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
+        user = User.new(email: "test_user_#{volunteer_index}@#{k}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
         user.save
 
         event.volunteers << user
