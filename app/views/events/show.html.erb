@@ -8,8 +8,10 @@
       <p class='description' ><%= @event.description%></p>
       </div>
       <div class='address'>
-        <h3><%= @event.date %></h3>
+        <h3><%= @event.date.strftime("%I:%M%P")  %></h3>
+        <h3> <%= @event.date.strftime("%m/%d/%Y")  %></h3>
         <h3><%= @event.location %></h3>
+        <%= render partial: "shared/event_signup_or_register" %>
       </div>
     </div>
 
