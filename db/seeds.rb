@@ -20,6 +20,10 @@ group_slogan = "Helping the world get better"
 
 group_description = "Kale chips meh cardigan drinking vinegar. Helvetica pop-up umami, vinyl raw denim pour-over try-hard biodiesel gentrify hella ethnic whatever mustache salvia Godard. 3 wolf moon irony quinoa, asymmetrical PBR Truffaut sriracha YOLO mumblecore forage Williamsburg synth blog selfies High Life. Banjo disrupt Williamsburg fashion axe Etsy. Terry Richardson post-ironic mlkshk twee plaid. Narwhal twee drinking vinegar Blue Bottle, hashtag master cleanse letterpress Williamsburg try-hard tofu pork belly mixtape distillery 8-bit. Marfa gentrify Pitchfork +1 chia, yr messenger bag 90's readymade chillwave cornhole photo booth chambray keytar."
 
+event_description = "Kale chips meh cardigan drinking vinegar. Helvetica pop-up umami, vinyl raw denim pour-over try-hard biodiesel gentrify hella ethnic whatever mustache salvia Godard. 3 wolf moon irony quinoa, asymmetrical PBR Truffaut sriracha YOLO mumblecore forage Williamsburg synth blog selfies High Life. Banjo disrupt Williamsburg fashion axe Etsy. Terry Richardson post-ironic mlkshk twee plaid. Narwhal twee drinking vinegar Blue Bottle, hashtag master cleanse letterpress Williamsburg try-hard tofu pork belly mixtape distillery 8-bit. Marfa gentrify Pitchfork +1 chia, yr messenger bag 90's readymade chillwave cornhole photo booth chambray keytar."
+
+event_special_instructions = ""
+
 group = nil
 event = nil
 user = nil
@@ -85,7 +89,7 @@ charities.each do |k,v|
     # Loop through events
     (rand(4..6)).times do |event_num|
 
-      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
+      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, description: event_description, special_instructions: event_special_instructions, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
       event.group = group
       event.save
 
