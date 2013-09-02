@@ -1,0 +1,4 @@
+// AJAX call to update events on the group page
+$('#events').html('<%= escape_javascript render partial: "group_events_list", locals: {events: @events} %>');
+$('#events_paginator').html('<%= escape_javascript(paginate(@events, :remote => true, :param_name => "events_page").to_s) %>');
+

@@ -1,4 +1,4 @@
-<div class='group_events'>
+<div id='events' class='group_events'>
   <h2>Events</h2>
   <% @events.inject(0) do |count, event| %>
     <% count +=1 %>
@@ -8,19 +8,6 @@
     </div>
     <div class='address'>
       <h3><%= event.location %></h3>
-      <div class='map'>
-        <% if count == 1%>
-        <%= gmaps(map_options: { auto_adjust: false, zoom: 14,  id: "map_#{count}", center_latitude:  event.latitude, center_longitude: event.longitude },
-          markers: { data: event.to_gmaps4rails },
-          last_map: false
-        ) %>
-        <% else %>
-        <%= gmaps(map_options: { auto_adjust: false, zoom: 14, id: "map_#{count}", center_latitude:  event.latitude, center_longitude: event.longitude },
-          markers: { data: event.to_gmaps4rails },
-          :scripts     => :none
-        ) %>
-        <% end %>
-      </div>
     </div>
 
   <% end %>
