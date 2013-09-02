@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @events = Event.where(group_id: params[:id]).by_date
+    @events = Event.where(group_id: params[:id]).by_date.page(params[:events_page]).per(4)
     @groupmap = Group.find(params[:id]).to_gmaps4rails
   end
 

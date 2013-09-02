@@ -1,25 +1,22 @@
-<div class='event_listing'>
-  <h1 class='name'><%=@event.name%></h1>
-  <p class='description' ><%= @event.description%></p>
-  <div><%= image_tag @event.image.thumb.url unless @event.image.thumb.url.nil? %></div>
-    <div class='causes'>
-      <h2>Causes</h2>
-      <p><%= @event.cause_list.join(', ') %></p>
-    </div>
+<div class='event'>
+  <div class='listing'>
+    <h1 class='name'><%=@event.name%></h1>
+    <p class='description' ><%= @event.description%></p>
+    <div><%= image_tag @event.image.detail.url unless @event.image.detail.url.nil? %></div>
+    <%= render partial: "shared/list_causes", locals: {object: @event} %>
 
     <%= render partial: "shared/event_signup_or_register" %>
 
-</div>
-
-    <%= render partial: "shared/event_volunteers_list" %>
-
-<div class='event_sidebar'>
-  <div class='address'>
-    <h3><%= @event.location %></h3>
-
-    <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
   </div>
 
+<%= render partial: "shared/event_volunteers_list" %>
 
+  <div class='sidebar'>
+    <div class='address'>
+      <h3><%= @event.location %></h3>
+
+      <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
+      </div>
+    </div>
   </div>
 </div>
