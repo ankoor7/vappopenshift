@@ -1,22 +1,27 @@
 <div class='event'>
   <div class='listing'>
-    <h1 class='name'><%=@event.name%></h1>
-    <p class='description' ><%= @event.description%></p>
-    <div><%= image_tag @event.image.detail.url unless @event.image.detail.url.nil? %></div>
-    <%= render partial: "shared/list_causes", locals: {object: @event} %>
 
-    <%= render partial: "shared/event_signup_or_register" %>
+    <div class='col-md-8 '>
+      <div class='logo'>
+      <h1 class='name'><%= image_tag(@event.group.logo.thumb.url, class: 'logo_image') unless @event.group.logo.thumb.url.nil? %> <%=@event.name%></h1>
+        <%= render partial: "shared/list_causes", locals: {object: @event} %>
+      <p class='description' ><%= @event.description%></p>
+      </div>
+      <div class='address'>
+        <h3><%= @event.date %></h3>
+        <h3><%= @event.location %></h3>
+      </div>
+    </div>
 
-  </div>
-
-<%= render partial: "shared/event_volunteers_list" %>
-
-  <div class='sidebar'>
-    <div class='address'>
-      <h3><%= @event.location %></h3>
-
+    <div class='info col-md-4 '>
+      <div class='event_image'>
+        <%= image_tag(@event.image.detail.url, class: "img-responsive img-rounded") unless @event.image.detail.url.nil? %>
+      </div>
       <div class='map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
       </div>
     </div>
   </div>
+
+<%= render partial: "shared/event_volunteers_list" %>
+
 </div>
