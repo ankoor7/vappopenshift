@@ -1,0 +1,9 @@
+<h1>Events about <%= params[:q].values.to_sentence %></h1>
+<div class='row'>
+  <div id="search_events_paginator" class="col-xs-12">
+    <%= paginate @search_events, :remote => true, :param_name => "events_page" %>
+  </div>
+</div>
+<div  id="search_events">
+  <%= render partial: "shared/event_summary", locals: {events: @search_events} %>
+</div>

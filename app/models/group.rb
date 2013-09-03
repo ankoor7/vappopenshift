@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   has_many :leaders, through: :groups_leaders, foreign_key: :leader_id
   has_many :volunteers, through: :groups_volunteers, foreign_key: :volunteer_id
 
-  attr_accessible :email, :location, :name, :phone, :website, :description, :causes, :logo, :cause_list, :splash_image, :video, :splash_image_html, :video_html, :slogan
+  attr_accessible :email, :location, :name, :phone, :website, :description, :causes, :logo, :cause_list, :splash_image, :video, :splash_image_html, :video_html, :slogan, :cause_search_hack
 
   include AutoHtml
 

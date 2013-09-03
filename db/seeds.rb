@@ -77,7 +77,8 @@ splash_images = {
 # Make test Groups and events by nested loops
 # Loop through groups
 charities.each do |k,v|
-    group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, cause_list: causes.sample(Random.new.rand(1..4)).join(", "), location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
+    cause_sample = causes.sample(Random.new.rand(1..4)).join(", ")
+    group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, cause_list: cause_sample, cause_search_hack: cause_sample, location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
 
     # , splash_image: File.new(splash_images_path + k.to_s + ".jpg")
     group.save
@@ -93,8 +94,8 @@ charities.each do |k,v|
 
     # Loop through events
     (rand(4..6)).times do |event_num|
-
-      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, description: event_description, cause_list: causes.sample(Random.new.rand(1..2)).join(", "), special_instructions: event_special_instructions, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
+      cause_sample_event = causes.sample(Random.new.rand(1..2)).join(", ")
+      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, description: event_description, cause_list: cause_sample_event, cause_search_hack: cause_sample_event, special_instructions: event_special_instructions, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
       event.group = group
       event.save
 

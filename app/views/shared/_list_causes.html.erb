@@ -1,8 +1,10 @@
 <% if object.cause_list.length > 0 %>
   <div class='causes'>
     Causes:<br/>
-    <% object.cause_list.each do |cause| %>
-    <span class="label label-cause" href="#"><%= cause %></span>
+    <%= search_form_for @q, url: search_path, html: {method: :post} do |f| %>
+      <% object.cause_list.each do |cause| %>
+        <button type="submit" class="label label-cause" name="q[cause_search_hack_or_group_name_or_name_cont]" value=<%=cause%>><%= cause %></button>
+      <% end %>
     <% end %>
   </div>
 <% end %>

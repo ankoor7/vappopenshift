@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902153320) do
+ActiveRecord::Schema.define(:version => 20130903221129) do
 
   create_table "charities", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130902153320) do
     t.string   "causes"
     t.string   "image"
     t.boolean  "welcome_email_sent",   :default => false
+    t.string   "cause_search_hack"
   end
 
   create_table "events_volunteers", :force => true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130902153320) do
     t.text     "video_html"
     t.text     "splash_image_html"
     t.string   "slogan"
+    t.string   "cause_search_hack"
   end
 
   add_index "groups", ["charity_id"], :name => "index_groups_on_charity_id"

@@ -13,9 +13,9 @@
             <ul class="nav navbar-nav navbar-right">
               <%= search_form_for @q, url: search_path, html: {method: :post, class: "navbar-form navbar-left", role: "search"} do |f| %>
                 <div class="form-group">
-                <%= f.text_field :causes_or_group_name_or_name_cont, class: "form-control input-sm", placeholder: 'Search' %>
+                <%= f.text_field :cause_search_hack_or_group_name_or_name_cont, class: "form-control", placeholder: 'Search' %>
                 </div>
-                <button type="submit" class="btn btn-sm">Submit</button>
+                <button type="submit" class="btn">Submit</button>
               <% end %>
             <% if current_user %>
               <li><%= link_to "Dashboard", dashboard_path %></li>
