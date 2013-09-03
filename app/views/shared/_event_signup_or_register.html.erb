@@ -1,14 +1,14 @@
   <div class="form_container">
     <% case %>
       <% when current_user.nil? %>
-          <%= link_to "Register with Vapp", new_user_registration_path%>
-      <% when current_user.registered_for?(@event) %>
-        <%= form_tag(unregister_events_volunteer_path(@event)) do %>
-          <%= submit_tag   "Unregister" %>
+          <%= link_to "Register with Vapp", new_user_registration_path, class:"btn btn-primary"%>
+      <% when current_user.registered_for?(event) %>
+        <%= form_tag(unregister_events_volunteer_path(event)) do %>
+          <%= submit_tag   "Unregister", class:"btn btn-primary" %>
         <% end %>
-      <% when @event.space_available? && current_user.registered_for?(@event) == false %>
-        <%= form_tag(register_events_volunteer_path(@event)) do %>
-          <%= submit_tag   "Sign-up" %>
+      <% when event.space_available? && current_user.registered_for?(event) == false %>
+        <%= form_tag(register_events_volunteer_path(event)) do %>
+          <%= submit_tag   "Sign-up", class:"btn btn-primary" %>
         <% end %>
     <% end %>
   </div>

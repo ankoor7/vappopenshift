@@ -22,8 +22,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.cause_list = params[:event][:cause_list]
-    # EDIT TO INCLUDE MULTIGROUP FUNCTIONALITY
-    # assign a relevent group, not the first group of the current_user
     @group = Group.find(params[:group_id])
     @event.group = @group
     @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)

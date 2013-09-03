@@ -4,7 +4,7 @@
     <% count +=1 %>
     <div>
       <h2><%= event.name %></h2>
-      <p>Spaces left: <%= event.remaining_spaces %>
+      <p>Spaces left: <%= event.remaining_spaces %> <%= render partial: "shared/event_signup_or_register", locals: {event: event} %></p>
     </div>
     <div class='address'>
       <h3><%= event.location %></h3>

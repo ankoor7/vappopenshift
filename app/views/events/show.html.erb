@@ -1,17 +1,20 @@
 <div class='event'>
   <div class='listing'>
 
-    <div class='col-md-8 '>
+    <div class='col-md-12'>
       <div class='logo'>
-      <h1 class='name'><%= image_tag(@event.group.logo.thumb.url, class: 'logo_image') unless @event.group.logo.thumb.url.nil? %> <%=@event.name%></h1>
-        <%= render partial: "shared/list_causes", locals: {object: @event} %>
-      <p class='description' ><%= @event.description%></p>
+      <h1 class='name'><%= link_to(image_tag(@event.group.logo.thumb.url, class: 'logo_image'), @event.group) unless @event.group.logo.thumb.url.nil? %> <%=@event.name%> </h1>
       </div>
+    </div>
+
+    <div class='col-md-8'>
+      <p class='description' ><%= @event.description%></p>
+        <%= render partial: "shared/list_causes", locals: {object: @event} %>
       <div class='address'>
         <h3><%= @event.date.strftime("%I:%M%P")  %></h3>
         <h3> <%= @event.date.strftime("%m/%d/%Y")  %></h3>
         <h3><%= @event.location %></h3>
-        <%= render partial: "shared/event_signup_or_register" %>
+        <%= render partial: "shared/event_signup_or_register", locals: {event: @event}  %>
       </div>
     </div>
 

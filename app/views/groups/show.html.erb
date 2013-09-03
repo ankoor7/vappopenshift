@@ -1,25 +1,18 @@
-<div class='group'>
+<div class='group clearfix'>
   <div class='listing'>
     <div class='col-md-4'>
       <div class='logo'>
         <%= image_tag(@group.logo.medium.url, class: 'logo_image') unless @group.logo.medium.url.nil? %>
       <h1 class='name'><%=@group.name%></h1>
-      <h2 class='slogan'><%=@group.slogan%></h2>
+      <h2 class='slogan lead'><%=@group.slogan%></h2>
+      <%= render partial: "shared/list_causes", locals: {object: @group} %>
+      <p class='description' ><%=@group.description%></p>
       </div>
     </div>
     <div class='info col-md-8'>
       <div class='group_video hidden-xs'>
         <%= @group.video_html %>
       </div>
-      <%= render partial: "shared/list_causes", locals: {object: @group} %>
-    </div>
-  </div>
-
-  <div class='assets'>
-    <div class='col-md-12'>
-      <p class='description' ><%=@group.description%></p>
-    </div>
-    <div class='col-md-12'>
       <%= render partial: "group_events_list" %>
       <div id="events_paginator">
         <%= paginate @events, :remote => true, :param_name => "events_page" %>
@@ -27,7 +20,9 @@
     </div>
   </div>
 
-  <div class='sidebar'>
+  <div class='events'>
+    <div class='col-md-8'>
+    </div>
   </div>
 
 </div>
