@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
     event.group.leader_ids.include? self.id
   end
 
+  def leads_a_group?
+    led_groups.count > 0
+  end
+
 end
