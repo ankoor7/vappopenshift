@@ -2,7 +2,7 @@
 
 <h2>Upcoming Events</h2>
 <div class='row'>
-  <div id="events_paginator">
+  <div id="events_paginator" class="col-xs-12">
     <%= paginate @events, :remote => true, :param_name => "events_page" %>
   </div>
 </div>

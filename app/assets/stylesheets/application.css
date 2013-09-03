@@ -29,3 +29,16 @@
   background-color: #8E44AD;
 }
 
+.event_wrapper {
+  padding: 10px;
+}
+
+.event_summary {
+  background:#ECF0F1;
+  border-radius: 5px;
+  padding: 10px 10px 20px 10px;
+}
+
+.sign_up_button {
+  margin: 10px 10px 10px 0px;
+}
