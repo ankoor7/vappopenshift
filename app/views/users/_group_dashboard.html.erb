@@ -1,8 +1,23 @@
 <% groups.each do |group| %>
-    <h2><%= link_to group.name, group %></h2>
-      <%= link_to 'Edit', edit_group_path(group) %>
-      <%= link_to 'Add an event', new_group_event_path(group) %>
-      <p><%= group.description %></p>
+    <div class='logo clearfix'>
+      <div class='col-md-1'>
+      <%= image_tag(group.logo.thumb.url, class: 'logo_image img-responsive') unless group.logo.thumb.url.nil? %>
+    </div>
+      <div class='col-sm-3'>
+      <h2><%= link_to group.name, group %></h2>
+    <%= link_to(edit_group_path(group)) do
+         content_tag :span, 'Edit', class: "label label-default"
+    end %>
+    </div>
+    </div>
+
+    <p><%= truncate(group.description, length: 253, separator: " ", omission: '... (continued)') %></p>
+
+    <h3>Events</h3>
+    <%= link_to(new_group_event_path(group)) do
+        content_tag :span, 'Create an event', class: "label label-default"
+    end %>
+
 
 
   <% if group.events.count > 0 %>
@@ -21,7 +36,7 @@
     <% group.events.each do |event| %>
       <tr>
         <td><%= link_to event.name, event %></td>
-        <td><%= event.description %></td>
+        <td><%= truncate(event.description, length: 153, separator: " ", omission: '... (continued)') %></td>
         <td><%= event.volunteers.count %></td>
         <td><%= event.number_volunteers - event.volunteers.count %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %> </td>
