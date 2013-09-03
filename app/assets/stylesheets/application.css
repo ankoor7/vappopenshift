@@ -16,5 +16,16 @@
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
 .navbar-form {
-vertical-align: middle !important;
+  vertical-align: middle !important;
 }
+
+.label.label-cause {
+  background-color: #9B59B6;
+  font-size: 1em;
+}
+
+.label-cause[href]:hover,
+.label-cause[href]:focus {
+  background-color: #8E44AD;
+}
+
