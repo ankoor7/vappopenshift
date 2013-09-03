@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'pry'
+
 User.destroy_all
 Event.destroy_all
 Group.destroy_all
@@ -22,7 +24,9 @@ group_description = "Kale chips meh cardigan drinking vinegar. Helvetica pop-up 
 
 event_description = "Kale chips meh cardigan drinking vinegar. Helvetica pop-up umami, vinyl raw denim pour-over try-hard biodiesel gentrify hella ethnic whatever mustache salvia Godard. 3 wolf moon irony quinoa, asymmetrical PBR Truffaut sriracha YOLO mumblecore forage Williamsburg synth blog selfies High Life. Banjo disrupt Williamsburg fashion axe Etsy. Terry Richardson post-ironic mlkshk twee plaid. Narwhal twee drinking vinegar Blue Bottle, hashtag master cleanse letterpress Williamsburg try-hard tofu pork belly mixtape distillery 8-bit. Marfa gentrify Pitchfork +1 chia, yr messenger bag 90's readymade chillwave cornhole photo booth chambray keytar."
 
-event_special_instructions = ""
+event_special_instructions = "Narwhal twee drinking vinegar Blue Bottle, hashtag master cleanse letterpress Williamsburg try-hard tofu pork belly mixtape distillery 8-bit. Marfa gentrify Pitchfork 1 chia, yr messenger bag 90's readymade chillwave cornhole photo booth chambray keytar."
+
+causes = ["food", "people", "mentoring", "music", "art", "science", "education", "health", "money", "poverty", "tech", "digital", "marketing", "elderly", "youth", "social welfare"]
 
 group = nil
 event = nil
@@ -73,7 +77,8 @@ splash_images = {
 # Make test Groups and events by nested loops
 # Loop through groups
 charities.each do |k,v|
-    group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
+    group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, cause_list: causes.sample(Random.new.rand(1..4)).join(", "), location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
+
     # , splash_image: File.new(splash_images_path + k.to_s + ".jpg")
     group.save
     group_index += 1
@@ -89,7 +94,7 @@ charities.each do |k,v|
     # Loop through events
     (rand(4..6)).times do |event_num|
 
-      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, description: event_description, special_instructions: event_special_instructions, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
+      event = Event.new(date: (DateTime.now + rand(15)), description: "A test event by #{group.name}", location: addresses.sample, description: event_description, cause_list: causes.sample(Random.new.rand(1..2)).join(", "), special_instructions: event_special_instructions, latitude: "", longitude: "", name: "Event #{event_num} at #{group.name}", number_volunteers: rand(9..16), image: File.new(File.join(Rails.root.to_s, images_path, k.to_s + ".jpg")))
       event.group = group
       event.save
 
@@ -110,7 +115,6 @@ charities.each do |k,v|
 end
 
 # Make volunteers
-
 
 
 
