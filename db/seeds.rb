@@ -83,7 +83,7 @@ charities.each do |k,v|
     group.save
     group_index += 1
     (rand(1..3)).times do |volunteer_num|
-      user = User.new(email: "test_leader_#{volunteer_index}@#{k}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
+      user = User.new(email: "test_leader_#{volunteer_num}@#{k}.com", firstname: firstnames.sample, lastname: lastnames.sample, phone: "0790355555#{volunteer_num}", password: "password", password_confirmation: "password", t_and_c: true)
       user.save
 
       group.leaders << user
