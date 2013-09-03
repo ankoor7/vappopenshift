@@ -29,6 +29,16 @@
   background-color: #8E44AD;
 }
 
+.label.label-highlight {
+  background-color: #1ABC9C;
+  font-size: 1em;
+}
+
+.label-highlight[href]:hover,
+.label-highlight[href]:focus {
+  background-color: #16A085;
+}
+
 .event_wrapper {
   padding: 10px;
 }

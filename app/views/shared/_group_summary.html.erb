@@ -1,16 +1,29 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-    </tr>
-  <thead>
-  <tbody>
+<div class='row'>
     <% groups.each do |group| %>
-      <tr>
-        <td><%= link_to group.name, group %></td>
-        <td><%= group.description %></td>
-      </tr>
+
+    <div class='col-sm-6'>
+      <div class='row'>
+        <div class='col-xs-3' style="display: table-cell; vertical-align: middle;">
+          <%= link_to(image_tag(group.logo.thumb.url, class: 'logo_image img-responsive'), group) unless group.logo.thumb.url.nil? %>
+        </div>
+        <div class='col-xs-9'>
+          <h3><%= link_to group.name, group %></h3>
+          <h2 class='slogan lead '><%=group.slogan%></h2>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-12 group_video'>
+            <% if group.video_html %>
+              <div class='flex-video'>
+                <%= group.video_html %>
+              </div>
+            <% end %>
+        </div>
+        <div class='col-md-12 group_video hidden-xs'>
+          <%= truncate(group.description, length: 253, separator: " ", omission: '... (continued)') %>
+        </div>
+      </div>
+    </div>
+
     <% end %>
-  <tbody>
-</table>
+</div>
