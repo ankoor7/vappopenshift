@@ -1,16 +1,16 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-    </tr>
-  <thead>
-  <tbody>
-    <% events.each do |event| %>
-      <tr>
-        <td><%= link_to event.name, event %></td>
-        <td><%= event.date.strftime("%m/%d/%Y at %I:%M%P")  %></td>
-      </tr>
-    <% end %>
-  <tbody>
-</table>
+<div class='row'>
+<% events.each_with_index do |event,count| %>
+    <% if count % 4 == 0 %>
+    </div>
+    <div class='row'>
+   <% end %>
+  <div class='event col-md-3'>
+    <div class='summary'>
+      <h3><%= link_to event.name, event %></h3>
+      <h5><%= event.date.strftime("%m/%d/%Y at %I:%M%P")  %></h5>
+    </div>
+    <div class='event_description'>
+    </div>
+  </div>
+<% end %>
+</div>

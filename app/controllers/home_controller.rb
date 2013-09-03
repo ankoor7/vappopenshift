@@ -8,9 +8,9 @@ class HomeController < ApplicationController
     if current_user && current_user.attending_events?
       @events = Event.available_events(current_user).by_date.page(params[:events_page]).per(10)
       @user_events = current_user.events.by_date.page(params[:user_events_page]).per(5)
-    else
-      @events = Event.by_date.page(params[:events_page]).per(10)
     end
+      @events = Event.by_date.page(params[:events_page]).per(8)
+      @user_events = Event.by_date.page(params[:events_page]).per(10)
   end
 
   def search
