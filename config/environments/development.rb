@@ -17,6 +17,11 @@ Vapp::Application.configure do
   :password  => "VAPP_MANDRILL_API_KEY"
   }
 
+  # carrierWave config
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.

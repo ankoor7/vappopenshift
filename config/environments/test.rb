@@ -9,6 +9,10 @@ Vapp::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
 
+  # carrierWave config
+  CarrierWave.configure do |config|
+    config.storage = :file
+  end
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that

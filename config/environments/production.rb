@@ -16,6 +16,17 @@ Vapp::Application.configure do
   :password  => "VAPP_MANDRILL_API_KEY"
   }
 
+  # CarrierWave and AWS config
+  CarrierWave.configure do |config|
+    config.storage = :fog
+    config.fog_credentials = {
+      :provider               => 'AWS',
+      :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+    config.fog_directory  = 'vapp'
+  end
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
@@ -80,6 +91,6 @@ Vapp::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Devise
+  # Devise and carrierwave
   config.assets.initialize_on_precompile = false
 end
