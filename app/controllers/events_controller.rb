@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.cause_list = params[:event][:cause_list]
-    @event.cause_search_hack =params[:event][:cause_list].join(", ")
+    @event.cause_search_hack =params[:event][:cause_list]
     @group = Group.find(params[:group_id])
     @event.group = @group
     @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.cause_list = params[:event][:cause_list]
-    @event.cause_search_hack =params[:event][:cause_list].join(", ")
+    @event.cause_search_hack =params[:event][:cause_list]
     @event.date=DateTime.new(params[:date][:year].to_i,params[:date][:month].to_i,params[:date][:day].to_i,params[:date][:hour].to_i,params[:date][:minute].to_i,params[:date][:second].to_i)
     respond_to do |format|
       if @event.update_attributes(params[:event])

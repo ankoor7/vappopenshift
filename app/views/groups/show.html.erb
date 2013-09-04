@@ -6,6 +6,7 @@
       <h1 class='name'><%=@group.name%></h1>
       <h2 class='slogan lead'><%=@group.slogan%></h2>
       <%= render partial: "shared/list_causes", locals: {object: @group} %>
+      <%= render partial: "shared/group_admin_options" %>
       <p class='description' ><%=@group.description%></p>
       </div>
     </div>

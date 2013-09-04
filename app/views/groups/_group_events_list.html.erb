@@ -1,14 +1,25 @@
-<div id='events' class='group_events'>
-  <h2>Events</h2>
-  <% @events.inject(0) do |count, event| %>
-    <% count +=1 %>
-    <div>
-      <h2><%= event.name %></h2>
-      <p>Spaces left: <%= event.remaining_spaces %> <%= render partial: "shared/event_signup_or_register", locals: {event: event} %></p>
+<h2>Events</h2>
+  <div id='events' class='group_events'>
+    <div class='row'>
+    <% @events.each_with_index do |event,count| %>
+        <% if count % 2 == 0 %>
+        </div>
+        <div class='row'>
+       <% end %>
+       <div class='event_wrapper col-sm-6 col-xs-12'>
+        <div class='event_summary'>
+          <div class='summary'>
+            <h3><%= link_to event.name, event %></h3>
+            <h4><%= event.date.strftime("%m/%d/%Y at %I:%M%P")  %></h4>
+            <%= render partial: "shared/list_causes", locals: {object: event} %>
+            <%= render partial: "shared/event_signup_or_register", locals: {event: event} %>
+            <div class='event_description'>
+              <p><%= event.description %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
     </div>
-    <div class='address'>
-      <h3><%= event.location %></h3>
-    </div>
-
-  <% end %>
 </div>
+

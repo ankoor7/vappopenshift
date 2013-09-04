@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params[:group])
     @group.cause_list = params[:group][:cause_list]
-    @group.cause_search_hack =params[:group][:cause_list].join(", ")
+    @group.cause_search_hack =params[:group][:cause_list]
     @group.leaders << current_user
     respond_to do |format|
       if @group.save
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     @group.cause_list = params[:group][:cause_list]
-    @group.cause_search_hack =params[:group][:cause_list].join(", ")
+    @group.cause_search_hack =params[:group][:cause_list]
     respond_to do |format|
       if @group.update_attributes(params[:group])
         format.html { redirect_to @group, notice: 'Your group was successfully updated.' }

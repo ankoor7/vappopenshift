@@ -15,6 +15,10 @@
 
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc2/css/bootstrap-glyphicons.css");
 
+body {
+  padding-bottom: 50px;
+}
+
 .navbar-form {
   vertical-align: middle !important;
 }
@@ -93,3 +97,15 @@ button {
 border: none;
 background: none;
 }
+
+ul.dropdown-menu {
+  padding: 10px 10px 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* TAG CLOUD SIZEZ*/
+.label.label-cause.css1 { font-size: 1.0em; margin: 10px; }
+.label.label-cause.css2 { font-size: 1.4em; margin: 10px; }
+.label.label-cause.css3 { font-size: 1.8em; margin: 10px; }
+.label.label-cause.css4 { font-size: 2.2em; margin: 10px; }
+.label.label-cause.css5 { font-size: 2.6em; margin: 10px; }

@@ -1,0 +1,10 @@
+<% if can? :update, @group %>
+<div class='row'>
+  <%= link_to(edit_group_path(@group), class: 'h4') do
+       content_tag :span, 'Edit group', class: "label label-default admin_option col-md-6"
+  end %>
+  <%= link_to(new_group_event_path(@group), class: "h4") do
+    content_tag :span, 'Add an event', class: "label label-default admin_option col-md-6"
+  end %>
+</div>
+<% end %>
