@@ -3,7 +3,8 @@
 
     <div class='col-md-12'>
       <div class='logo'>
-      <h1 class='name'><%= link_to(image_tag(@event.group.logo.thumb.url, class: 'logo_image'), @event.group) unless @event.group.logo.thumb.url.nil? %> <%=@event.name%> </h1>
+        <h1 class='name'><%= link_to(image_tag(@event.group.logo.thumb.url, class: 'logo_image'), @event.group) unless @event.group.logo.thumb.url.nil? %> <%=@event.name%> </h1>
+          <%= render partial: "shared/event_admin_options" %>
       </div>
     </div>
 
@@ -26,7 +27,4 @@
       </div>
     </div>
   </div>
-
-<%= render partial: "shared/event_volunteers_list" %>
-
 </div>
