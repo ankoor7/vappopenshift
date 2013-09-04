@@ -1,8 +1,9 @@
 <div id='dashboard'>
-  <h1>Dashboard</h1>
-    <%= link_to(new_group_path) do
-         content_tag :span, 'Create a group', class: "label label-highlight"
+  <h1>Dashboard
+    <%= link_to(new_group_path, class:"h3") do
+         content_tag :span, 'Create a group', class: "label label-default admin_option"
     end %>
+    </h1>
 
   <% if current_user && current_user.attending_events? %>
     <h2>Your Events</h2>

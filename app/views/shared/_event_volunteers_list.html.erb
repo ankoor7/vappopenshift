@@ -1,17 +1,23 @@
-<% if can? :update, @event %>
+<% if can? :update, event %>
 <div>
-  <h2>Volunteers</h2>
-  <% case %>
-  <% when @event.space_available? %>
-    <p>There's <%= pluralize(@event.remaining_spaces, "space") %> remaining </p>
-  <% when @event.space_available? == false %>
+  <% if event.space_available? == false %>
     <p> This event is full </p>
   <% end %>
 
-  <% @event.volunteers.each do |volunteer| %>
-    <p><%= "#{volunteer.firstname} #{volunteer.lastname} " %></p>
-    <p><%= volunteer.phone %></p>
+  <table class='table'>
+    <tr>
+      <th>volunteer</th>
+      <th>phone</th>
+      <th>email</th>
+    </tr>
+  <% event.volunteers.each do |volunteer| %>
+  <tr>
+    <td><%= "#{volunteer.firstname} #{volunteer.lastname}" %></td>
+    <td><%= volunteer.phone %></td>
+    <td><%= volunteer.email %></td>
+  </tr>
   <% end %>
+</table>
 </div>
 <% end %>
 

@@ -1,0 +1,5 @@
+<% if can? :update, @event %>
+  <%= link_to(edit_event_path(@event), class: 'h4') do
+       content_tag :span, 'Edit', class: "label label-default"
+  end %>
+<% end %>
