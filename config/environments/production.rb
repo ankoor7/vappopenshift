@@ -22,7 +22,8 @@ Vapp::Application.configure do
     config.fog_credentials = {
       :provider               => 'AWS',
       :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],
-      :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY']
+      :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
+      region: 'ireland'
     }
     config.fog_directory  = 'vapp'
   end
