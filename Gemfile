@@ -20,6 +20,7 @@ gem "fog", "~> 1.3.1"
 gem 'rmagick'
 gem "auto_html"
 gem 'ransack'
+gem 'rails_12factor'
 
 group :development do
   gem 'pry-rails'
