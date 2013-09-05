@@ -1,10 +1,6 @@
 Vapp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # Devise and carrierwave
-  config.assets.initialize_on_precompile = false
-
-
   config.action_mailer.default_url_options = { :host => 'example.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
@@ -46,7 +42,7 @@ Vapp::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
