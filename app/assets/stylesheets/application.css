@@ -49,14 +49,17 @@ body {
   /*background-color: #ecf0f1;*/
 }
 
-.jumbotron h1,
-.jumbotron h2 {
+.jumbotron h1 {
   line-height: 1;
   color: black;
 }
 
 .jumbotron p {
   line-height: 1.4;
+}
+
+.jumbotron h2 {
+  color: #bdc3c7 ;
 }
 
 .container .jumbotron {
