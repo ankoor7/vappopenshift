@@ -39,7 +39,6 @@ class Group < ActiveRecord::Base
     html_escape
     image
     youtube(:width => 560, :height => 350)
-    link :target => "_blank", :rel => "nofollow"
     simple_format
   end
 
@@ -47,7 +46,6 @@ class Group < ActiveRecord::Base
     html_escape
     image
     flickr(:maxwidth => 1200)
-    link :target => "none", :rel => "nofollow"
   end
 
 end

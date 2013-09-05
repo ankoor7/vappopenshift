@@ -12,12 +12,14 @@ Vapp::Application.routes.draw do
     end
   end
 
-  devise_for :user
+  devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions }
   devise_scope :user do
     get "/dashboard", :to => "users#dashboard"
   end
 
-  root :to => "home#index"
+  get "/landing", :to => "home#landing"
+  get "/home", :to => "home#index"
+  root :to => "home#landing"
 
   match 'search', to: 'home#search', via: [:get, :post], as: :search
 

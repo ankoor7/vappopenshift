@@ -13,6 +13,9 @@ class HomeController < ApplicationController
     end
   end
 
+  def landing
+  end
+
   def search
     @search_events = @q.result(distinct: true).page(params[:events_page]).per(8)
     @causes = Event.tag_counts_on(:causes)
