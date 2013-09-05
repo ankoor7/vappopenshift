@@ -1,9 +1,14 @@
 
 <% unless current_user && current_user.sign_in_count >5 %>
-
-<div id='banner' style='height:200px;'>
-<h1> Banner here </h1>
-</div>
+  <div id='welcome_banner'>
+    <div class="jumbotron">
+      <div class="container">
+        <div class='col-md-12'>
+          <h1>Welcome to VAPP </h1>
+        </div>
+      </div>
+    </div> <!-- END JUMBOTRON -->
+  </div>
 <% end %>
 
 <h2>Groups</h2>

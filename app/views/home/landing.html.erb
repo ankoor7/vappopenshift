@@ -1,0 +1,72 @@
+<div id='landing'>
+
+  <div row='banner' class='row'>
+    <div class="jumbotron">
+      <div class="container">
+        <div class='col-md-12'>
+          <h1>VAPP </h1>
+          <p class="lead">We help you find good causes and groups passionate about changing the world</p>
+          <div id="carousel-example-generic" class="carousel slide">
+            <!-- Indicators -->
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <h2>Find a cause</h2>
+              </div>
+              <div class="item">
+                <h2> Build a following</h2>
+              </div>
+              <div class="item">
+                <h2>Change the world</h2>
+              </div>
+              <div class="item">
+                <h2><%= link_to "Join Vapp", new_user_registration_path, class:"btn btn-info"%></h2>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left" href="#carousel-example-generic" data-slide="prev">
+              <span class="icon-prev"></span>
+            </a>
+            <a class="right" href="#carousel-example-generic" data-slide="next">
+              <span class="icon-next"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> <!-- END JUMBOTRON -->
+  </div>  <!-- END BANNER -->
+
+  <div class='instructions'>
+
+    <div class='row'>
+      <div class='instruction col-xs-12 col-sm-6'>
+        <!-- MAKE A GROUP -->
+        <%= content_tag :div, (image_tag 'icons/Watches@2x.png', class: 'img-responsive'), class: "centred" %>
+        <%= content_tag :div, (content_tag :h3, "Add your group and start creating events"), class: "" %>
+      </div>
+
+      <div class='instruction col-xs-12 col-sm-6'>
+      <!-- Share your events -->
+      <%= content_tag :div, (image_tag 'icons/Chat@2x.png', class: 'img-responsive'), class: "centred" %>
+      <%= content_tag :div, (content_tag :h3, "Share your events across your social media"), class: "" %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='instruction col-xs-12 col-sm-6'>
+      <!-- See volunteers -->
+      <%= content_tag :div, (image_tag 'icons/Clipboard@2x.png', class: 'img-responsive'), class: "centred" %>
+      <%= content_tag :div, (content_tag :h3, "You'll see who is signed up and how to contact them"), class: "" %>
+      </div>
+
+      <div class='instruction col-xs-12 col-sm-6'>
+        <!-- Emails -->
+        <%= content_tag :div, (image_tag 'icons/Mail@2x.png', class: 'img-responsive'), class: "centred" %>
+        <%= content_tag :div, (content_tag :h3, "We'll remind your volunteers when an event is approaching"), class: "" %>
+      </div>
+    </div>
+
+
+</div>

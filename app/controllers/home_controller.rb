@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   # load_and_authorize_resource
 
   def index
+    @user = User.new
     # @search_events = @q.result(:distinct => true)
     @groups = Group.page(params[:groups_page]).per(2)
     if current_user && current_user.attending_events?
@@ -12,8 +13,19 @@ class HomeController < ApplicationController
     end
   end
 
+  def landing
+  end
+
   def search
     @search_events = @q.result(distinct: true).page(params[:events_page]).per(8)
+    @causes = Event.tag_counts_on(:causes)
+  end
+
+  def cause_cloud
+    @causes = Event.tag_counts_on(:causes)
+    respond_to do |format|
+        format.json { render json: @causes, location: @causes }
+    end
   end
 
 end

@@ -4,7 +4,7 @@
     </div>
     <div class='row'>
    <% end %>
-   <div class='event_wrapper col-sm-3 col-xs-6'>
+   <div class='event_wrapper col-sm-3 col-xs-12'>
     <div class='event_summary'>
       <div class='summary'>
         <h3><%= link_to event.name, event %></h3>
@@ -13,12 +13,6 @@
         <%= render partial: "shared/list_causes", locals: {object: event} %>
         <%= render partial: "shared/event_signup_or_register", locals: {event: event} %>
       </div>
-<!--       <div class='event_description' style='position: absolute;'>
-        <p>
-          <%= event.description %>
-        </p>
-      </div>
- -->
     </div>
   </div>
 <% end %>

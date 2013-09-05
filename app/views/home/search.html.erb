@@ -1,9 +1,19 @@
-<h1>Events about <%= params[:q].values.to_sentence %></h1>
-<div class='row'>
-  <div id="search_events_paginator" class="col-xs-12">
-    <%= paginate @search_events, :remote => true, :param_name => "events_page" %>
+<% if @search_events.length == 0 %>
+  <h1>We didn't find any events about <%= params[:q].values.to_sentence %></h1>
+  <p class='lead'>Would you like to explore one of these causes?<p>
+  <% tag_cloud(@causes, %w(css1 css2 css3 css4)) do |cause, css_class| %>
+    <%= search_form_for @q, url: search_path, html: {method: :post}, class: "col-xs-12 col-sm-4 col-md-3" do |f| %>
+      <button type="submit" class="label label-cause <%= css_class %>" name="q[cause_search_hack_or_group_name_or_name_cont]" value=<%=cause%>><%= cause %></button>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>Events about <%= params[:q].values.to_sentence %></h1>
+  <div class='row'>
+    <div id="search_events_paginator" class="col-xs-12">
+      <%= paginate @search_events, :remote => true, :param_name => "events_page" %>
+    </div>
   </div>
-</div>
-<div  id="search_events">
-  <%= render partial: "shared/event_summary", locals: {events: @search_events} %>
-</div>
+  <div  id="search_events">
+    <%= render partial: "shared/event_summary", locals: {events: @search_events} %>
+  </div>
+<% end %>
