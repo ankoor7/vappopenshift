@@ -17,4 +17,11 @@
 
 $(document).ready(function(){
     $(".form_tooltip").tooltip({ placement: 'auto right'});
+
+    $('.carousel').carousel({
+      interval: 2000,
+      pause: 'hover',
+      wrap: false
+    })
+
 });

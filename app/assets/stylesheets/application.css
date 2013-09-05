@@ -23,6 +23,60 @@ body {
   vertical-align: middle !important;
 }
 
+.centred img{
+  display: block;
+  margin: auto;
+}
+
+.instruction img {
+  max-width: 150px;
+}
+
+.instructions .instruction {
+  padding: 50px;
+}
+
+.jumbotron {
+  padding: 30px;
+  margin-bottom: 0px;
+  font-size: 22.5px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  background-color: rgba(255, 255, 255, 0.15);
+  background: url("background.jpg") no-repeat;
+  background-size: cover;
+  /*color: inherit;*/
+  /*background-color: #ecf0f1;*/
+}
+
+.jumbotron h1,
+.jumbotron h2 {
+  line-height: 1;
+  color: black;
+}
+
+.jumbotron p {
+  line-height: 1.4;
+}
+
+.container .jumbotron {
+  border-radius: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container .jumbotron {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  .jumbotron h1 {
+    font-size: 67.5px;
+  }
+}
+
 .label {
     margin-left: 0.7em;
 }

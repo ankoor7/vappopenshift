@@ -5272,43 +5272,6 @@ a.list-group-item.active > .badge,
   margin-left: 3px;
 }
 
-.jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
-  font-size: 22.5px;
-  font-weight: 200;
-  line-height: 2.1428571435;
-  color: inherit;
-  background-color: #ecf0f1;
-}
-
-.jumbotron h1 {
-  line-height: 1;
-  color: inherit;
-}
-
-.jumbotron p {
-  line-height: 1.4;
-}
-
-.container .jumbotron {
-  border-radius: 6px;
-}
-
-@media screen and (min-width: 768px) {
-  .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-  .container .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-  .jumbotron h1 {
-    font-size: 67.5px;
-  }
-}
-
 .thumbnail {
   display: inline-block;
   display: block;
