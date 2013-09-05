@@ -13,11 +13,19 @@
       </div>
       <div class='row'>
         <div class='col-md-12 group_video'>
-            <% if group.video_html %>
-              <div class='flex-video'>
-                <%= group.video_html %>
-              </div>
-            <% end %>
+          <% if group.video_html.length >0 %>
+            <div class='flex-video'>
+              <%= group.video_html %>
+            </div>
+          <% elsif group.splash_image_html.length >0 %>
+            <div class='flex-video'>
+              <%= group.splash_image_html %>
+            </div>
+          <% else %>
+            <div class='flex-video'>
+              <%= link_to(image_tag(group.logo.detail.url), group) unless group.logo.detail.url.nil? %>
+            </div>
+          <% end %>
         </div>
         <div class='col-md-12 group_video hidden-xs'>
           <%= truncate(group.description, length: 253, separator: " ", omission: '... (continued)') %>
