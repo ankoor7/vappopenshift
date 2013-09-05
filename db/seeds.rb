@@ -77,8 +77,6 @@ splash_images = {
 charities.each do |k,v|
     cause_sample = causes.sample(Random.new.rand(1..4)).join(", ")
     group = Group.new(email: "test_charity_email_#{k.to_s}@gmail.com", description: group_description, slogan: group_slogan, cause_list: cause_sample, cause_search_hack: cause_sample, location: addresses[group_index], name: "#{v}", website: "#{k.to_s}.com", phone: "0790355555#{group_index}", logo: File.new(File.join(Rails.root.to_s, logos_path, k.to_s + ".jpg")), video: videos[k], splash_image: splash_images[k])
-
-    # , splash_image: File.new(splash_images_path + k.to_s + ".jpg")
     group.save
     group_index += 1
     (rand(1..3)).times do |volunteer_num|
