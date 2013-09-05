@@ -46,7 +46,7 @@ class Group < ActiveRecord::Base
   auto_html_for :splash_image do
     html_escape
     image
-    flickr(:maxwidth => 1200)
+    responsiveflickr(:maxwidth => 1200)
     link :target => "none", :rel => "nofollow"
     simple_format
   end

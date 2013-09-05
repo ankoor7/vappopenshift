@@ -11,9 +11,15 @@
       </div>
     </div>
     <div class='info col-md-8'>
-      <div class='group_video hidden-xs'>
-        <%= @group.video_html %>
-      </div>
+      <% if @group.video_html.length >0 %>
+        <div class='group_video hidden-xs  col-md-12'>
+          <%= @group.video_html %>
+        </div>
+      <% elsif @group.splash_image_html.length >0 %>
+        <div class='group_image col-md-12'>
+          <%= @group.splash_image_html %>
+        </div>
+      <% end %>
       <%= render partial: "group_events_list" %>
       <div id="events_paginator">
         <%= paginate @events, :remote => true, :param_name => "events_page" %>

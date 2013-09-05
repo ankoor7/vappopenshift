@@ -15,3 +15,6 @@
 //= require_tree .
 //= require jquery.ui.all
 
+$(document).ready(function(){
+    $(".form_tooltip").tooltip({ placement: 'auto right'});
+});

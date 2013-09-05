@@ -24,12 +24,13 @@
     <%= f.file_field :logo %>
   </div>
   <div class="field">
-    <%= f.label :splash_image %><br />
-    <%= f.text_field :splash_image, :class => "span6" %>
+    <%= f.label "Splash image (from flickr):" %><br />
+    <%= f.text_field :splash_image, :class => "span6 form_tooltip", title: "Enter the URL to a photo on flickr" %>
   </div>
+
   <div class="field">
-    <%= f.label :video %><br />
-    <%= f.text_field :video, :class => "span6" %>
+    <%= f.label "Video (from Youtube):" %><br />
+    <%= f.text_field :video, :class => "span6 form_tooltip", title: "Enter the URL to a YouTube video" %>
   </div>
   <div class="field">
     <%= f.label "Causes" %><br />
