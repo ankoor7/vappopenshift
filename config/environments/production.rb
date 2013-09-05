@@ -1,6 +1,10 @@
 Vapp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Devise and carrierwave
+  config.assets.initialize_on_precompile = false
+
+
   config.action_mailer.default_url_options = { :host => 'example.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
@@ -92,6 +96,4 @@ Vapp::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Devise and carrierwave
-  config.assets.initialize_on_precompile = false
 end
