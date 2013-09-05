@@ -35,8 +35,8 @@ volunteer_index = 1
   # charity = Charity.new(email: "test_charity_emailgmail.com", description: "A new charity on the system. Helping the world, one kid at a time.", location: "9 Back Hill, London, N1", name: "The Charity", website: "test_charity.com", phone: "07903555555")
   # charity.save
 
-logos_path = "/public/pics/logos/"
-images_path = "/public/pics/images/"
+logos_path = "/assets/seed_pics/logos/"
+images_path = "/assets/seed_pics/images/"
 
 charities = {
   foodcycle: "FoodCycle",
