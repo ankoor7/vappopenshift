@@ -14,6 +14,7 @@ Vapp::Application.routes.draw do
 
   devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions }
   devise_scope :user do
+    get "/account", :to => "users#show"
     get "/dashboard", :to => "users#dashboard"
   end
 

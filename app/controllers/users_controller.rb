@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     @groups = current_user.led_groups.includes(:events).page(params[:groups_page]).per(3)
   end
 
+  def show
+    @user = User.includes(:led_groups).find(current_user.id)
+  end
+
   def edit_profile
     @user = current_user
   end
