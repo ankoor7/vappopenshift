@@ -21,6 +21,7 @@ gem 'rmagick'
 gem "auto_html"
 gem 'ransack'
 gem 'rails_12factor'
+gem "haml-rails"
 
 group :development do
   gem 'pry-rails'
