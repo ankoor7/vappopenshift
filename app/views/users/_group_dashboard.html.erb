@@ -31,6 +31,7 @@
             <h4>
               <%= link_to event.name, event %>
             </h4>
+            <%= event.date.strftime("%d/%m/%Y at %I:%M%P")  %>
             <h5>
               <%= truncate(event.description, length: 53, separator: " ", omission: '... (continued)') %>
               Spaces left: <%= content_tag :span, (event.number_volunteers - event.volunteers.count), class: 'badge' %>
