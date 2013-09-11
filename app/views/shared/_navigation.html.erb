@@ -17,27 +17,30 @@
                 </div>
                 <button type="submit" class="btn">Submit</button>
               <% end %>
+
             <% if current_user %>
               <li><%= link_to "Dashboard", dashboard_path %></li>
               <li><%= link_to "Account", account_path %></li>
               <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            <% else %>
 
+            <% else %>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign-in<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-                    <li><%= f.label :email %><br />
-                    <%= f.email_field :email, :autofocus => true %></li>
-                    <li><%= f.label :password %><br />
-                    <%= f.password_field :password %></li>
-                    <% if devise_mapping.rememberable? -%>
-                      <li><%= f.check_box :remember_me %> <%= f.label :remember_me %></li>
-                    <% end -%>
-                    <li><%= f.submit "Sign in" %></li>
-                  <% end %>
-                  <%= render "devise/shared/links" %>
-                </ul>
+                  <ul class="dropdown-menu fullscreen" role="form">
+                    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {role: "form"} ) do |f| %>
+                      <div class="form-group col-md-12">
+                        <li><%= f.label :email, class: "sr-only" %><br />
+                        <%= f.email_field :email, :autofocus => true, class: "form-control input-sm ", placeholder: "Email" %></li>
+                        <li><%= f.label :password, class: "sr-only"  %><br />
+                        <%= f.password_field :password, class: "form-control input-sm", placeholder: "Password"  %></li>
+                        <% if devise_mapping.rememberable? -%>
+                          <li><%= f.check_box :remember_me %> <%= f.label :remember_me %></li>
+                        <% end -%>
+                      <li><%= f.submit "Sign in", class: "btn btn-info btn-sm" %></li>
+                    </div>
+                    <% end %>
+                    <%= render "devise/shared/links" %>
+                  </ul>
               </li>
               <li><%= link_to "Join", new_user_registration_path, class: "active" %></li>
             <% end %>
