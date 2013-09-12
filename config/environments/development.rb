@@ -11,10 +11,10 @@ Vapp::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  :address   => "smtp.mandrillapp.com",
-  :port      => 25,
-  :user_name => "MANDRILL_USERNAME",
-  :password  => "VAPP_MANDRILL_API_KEY"
+    :address   => "smtp.mandrillapp.com",
+    :port      => 25,
+    :user_name => "MANDRILL_USERNAME",
+    :password  => "VAPP_MANDRILL_API_KEY"
   }
 
   # carrierWave config

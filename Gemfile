@@ -22,6 +22,9 @@ gem "auto_html"
 gem 'ransack'
 gem 'rails_12factor'
 gem "haml-rails"
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 
 group :development do
   gem 'pry-rails'

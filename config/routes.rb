@@ -12,7 +12,10 @@ Vapp::Application.routes.draw do
     end
   end
 
-  devise_for :users, :controllers => { registrations: :registrations, sessions: :sessions }
+  devise_for :users, controllers: {
+    registrations: :registrations, sessions: :sessions,
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
   devise_scope :user do
     get "/account", :to => "users#show"
     get "/dashboard", :to => "users#dashboard"

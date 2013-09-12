@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def resource_class
+    devise_mapping.to
+  end
+
   def resource_name
     :user
   end
