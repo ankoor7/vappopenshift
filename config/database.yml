@@ -15,8 +15,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: vapp_development
-  pool: 5
+  database: <%= ENV["OPENSHIFT_APP_NAME"] %>
+  host: <%= ENV["OPENSHIFT_POSTGRESQL_DB_HOST"] %>
+  port: <%= ENV["OPENSHIFT_POSTGRESQL_DB_PORT"] %>
+  username: <%= ENV["OPENSHIFT_POSTGRESQL_DB_USERNAME"] %>
+  password: <%= ENV["OPENSHIFT_POSTGRESQL_DB_PASSWORD"] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
