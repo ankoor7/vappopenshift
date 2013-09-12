@@ -19,8 +19,8 @@ body {
   padding-bottom: 50px;
 }
 
-.navbar-form {
-  vertical-align: middle !important;
+.navbar .dropdown-menu {
+  min-width: 300px;
 }
 
 .centred img{

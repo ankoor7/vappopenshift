@@ -29,6 +29,7 @@ class Event < ActiveRecord::Base
   validates :number_volunteers, presence: true
 
 
+default_scope :order => 'date'
 scope :by_date, -> { order('date').where(date: DateTime.now..DateTime.now+2.month) }
 scope :available_events, lambda { |user| where("id NOT IN (?)", user.event_ids).where(date: DateTime.now..DateTime.now+1.month) }
 scope :approaching_events, lambda { where(date: DateTime.now+2.days..DateTime.now+3.days) }
