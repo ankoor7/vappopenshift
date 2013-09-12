@@ -1,0 +1,49 @@
+    <!-- Static navbar -->
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "Vapp", ( current_user ? home_path : root_path), class: "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <%= search_form_for @q, url: search_path, html: {method: :post, class: "navbar-form navbar-left", role: "search"} do |f| %>
+                <div class="form-group">
+                <%= f.text_field :cause_search_hack_or_group_name_or_name_cont, class: "form-control", placeholder: 'Search' %>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+              <% end %>
+            <% if current_user %>
+              <li><%= link_to "Dashboard", dashboard_path %></li>
+              <li><%= link_to "Account", edit_user_registration_path %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign-in<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                    <li><%= f.label :email %><br />
+                    <%= f.email_field :email, :autofocus => true %></li>
+                    <li><%= f.label :password %><br />
+                    <%= f.password_field :password %></li>
+                    <% if devise_mapping.rememberable? -%>
+                      <li><%= f.check_box :remember_me %> <%= f.label :remember_me %></li>
+                    <% end -%>
+                    <li><%= f.submit "Sign in" %></li>
+                  <% end %>
+                  <%= render "devise/shared/links" %>
+                </ul>
+              </li>
+              <li><%= link_to "Join", new_user_registration_path, class: "active" %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+

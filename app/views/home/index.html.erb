@@ -1,0 +1,42 @@
+
+<% unless current_user && current_user.sign_in_count >5 %>
+  <div id='welcome_banner'>
+    <div class="jumbotron">
+      <div class="container">
+        <div class='col-md-12'>
+          <h1>Welcome to VAPP </h1>
+        </div>
+      </div>
+    </div> <!-- END JUMBOTRON -->
+  </div>
+<% end %>
+
+<h2>Groups</h2>
+<div id="groups_paginator">
+  <%= paginate @groups, :remote => true, :param_name => "groups_page" %>
+</div>
+
+<div  id="groups">
+  <%= render partial: "shared/group_summary", locals: {groups: @groups} %>
+</div>
+
+<h2>Upcoming Events</h2>
+<div class='row'>
+  <div id="events_paginator" class="col-xs-12">
+    <%= paginate @events, :remote => true, :param_name => "events_page" %>
+  </div>
+</div>
+<div  id="events">
+  <%= render partial: "shared/event_summary", locals: {events: @events} %>
+</div>
+
+<% if current_user && current_user.attending_events? && !@user_events.nil? %>
+  <h2>Your Events</h2>
+  <div id="user_events_paginator">
+    <%= paginate @user_events, :remote => true, :param_name => "user_events_page"  %>
+  </div>
+  <div  id="user_events">
+    <%= render partial: "shared/event_summary", locals: {events: @user_events} %>
+  </div>
+<% end %>
+

@@ -1,0 +1,11 @@
+// AJAX call to update events on the home page
+$('#events').html('<%= escape_javascript render partial: "shared/event_summary", locals: {events: @events} unless @events.nil? %>');
+$('#events_paginator').html('<%= escape_javascript(paginate(@events, :remote => true, :param_name => "events_page").to_s) unless @events.nil? %>');
+
+// AJAX call to update groups on the home page
+$('#groups').html('<%= escape_javascript render partial: "shared/group_summary", locals: {groups: @groups} unless @groups.nil? %>');
+$('#groups_paginator').html('<%= escape_javascript(paginate(@groups, :remote => true, :param_name => "groups_page").to_s) unless @groups.nil? %>');
+
+// AJAX call to update user_events on the home page
+$('#user_events').html('<%= escape_javascript(render partial: "shared/event_summary", locals: {events: @user_events}) unless @user_events.nil? %>');
+$('#user_events_paginator').html('<%= escape_javascript(paginate(@user_events, :remote => true, :param_name => "user_events_page").to_s) unless @user_events.nil? %>');

@@ -1,0 +1,28 @@
+<div id='dashboard'>
+  <h1>Dashboard
+    <%= link_to(new_group_path, class:"h3") do
+         content_tag :span, 'Create a group', class: "label label-default admin_option"
+    end %>
+    </h1>
+
+  <% if current_user && current_user.attending_events? %>
+    <h2>Your Events</h2>
+    <div  id="user_events">
+      <%= render partial: "shared/event_summary", locals: {events: @user_events} %>
+    </div>
+
+    <div id="user_events_paginator">
+      <%= paginate @user_events, :remote => true, :param_name => "user_events_page"  %>
+    </div>
+  <% end %>
+
+  <% if current_user && current_user.leads_a_group? %>
+    <h2>Your Groups</h2>
+    <%= render partial: "group_dashboard", locals: {groups: @groups} %>
+
+
+    <div id="groups_paginator">
+      <%= paginate @groups, :param_name => "groups_page" %>
+    </div>
+  <% end %>
+</div>

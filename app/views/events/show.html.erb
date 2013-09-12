@@ -1,0 +1,36 @@
+<div class='event'>
+  <div class='listing'>
+
+    <div class='col-md-12'>
+      <div class='logo'>
+        <h1 class='name'><%= link_to(image_tag(@event.group.logo.thumb.url, class: 'logo_image'), @event.group) unless @event.group.logo.thumb.url.nil? %> <%=@event.name%> </h1>
+          <%= render partial: "shared/event_admin_options" %>
+      </div>
+    </div>
+
+    <div class='col-md-8'>
+      <p class='description' ><%= @event.description%></p>
+      <div class='address'>
+        <div class='row'>
+          <div class='col-md-6'>
+            <%= render partial: "shared/list_causes", locals: {object: @event} %>
+            <h3><%= @event.date.strftime("%I:%M%P")  %></h3>
+            <h3> <%= @event.date.strftime("%m/%d/%Y")  %></h3>
+            <h3><%= @event.location %></h3>
+            <%= render partial: "shared/event_signup_or_register", locals: {event: @event}  %>
+          </div>
+          <div class='col-md-6'>
+            <div class='map flex-map'><%= gmaps({ map_options: { auto_adjust: false, zoom: 14, center_latitude:  @event.latitude, center_longitude: @event.longitude }, markers: { data: @eventmap } }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='info col-md-4 '>
+      <div class='event_image'>
+        <%= image_tag(@event.image.detail.url, class: "img-responsive img-rounded") unless @event.image.detail.url.nil? %>
+      </div>
+    </div>
+  </div>
+</div>

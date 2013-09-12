@@ -1,0 +1,19 @@
+<div class='row'>
+<% events.each_with_index do |event,count| %>
+    <% if count % 4 == 0 %>
+    </div>
+    <div class='row'>
+   <% end %>
+   <div class='event_wrapper col-sm-3 col-xs-12'>
+    <div class='event_summary'>
+      <div class='summary'>
+        <h3><%= link_to event.name, event %></h3>
+        <%= link_to(image_tag(event.group.logo.thumb.url, class: 'logo_image'), event.group) unless event.group.logo.thumb.url.nil? %>
+        <h5><%= event.date.strftime("%m/%d/%Y at %I:%M%P")  %></h5>
+        <%= render partial: "shared/list_causes", locals: {object: event} %>
+        <%= render partial: "shared/event_signup_or_register", locals: {event: event} %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>

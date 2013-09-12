@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPPER']}&sensor=false" %>
+  <%= javascript_include_tag 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js'%>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <header>
+      <%= render partial: "shared/navigation" %>
+    </header>
+  <div class='container'>
+    <%= render partial: "shared/alerts" %>
+    <%= yield %>
+  </div>
+</body>
+<%= yield :scripts %>
+
+</html>

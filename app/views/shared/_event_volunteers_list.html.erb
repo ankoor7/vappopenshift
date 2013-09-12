@@ -1,0 +1,23 @@
+<% if can? :update, event %>
+<div>
+  <% if event.space_available? == false %>
+    <p> This event is full </p>
+  <% end %>
+
+  <table class='table'>
+    <tr>
+      <th>volunteer</th>
+      <th>phone</th>
+      <th>email</th>
+    </tr>
+  <% event.volunteers.each do |volunteer| %>
+  <tr>
+    <td><%= "#{volunteer.firstname} #{volunteer.lastname}" %></td>
+    <td><%= volunteer.phone %></td>
+    <td><%= volunteer.email %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
+<% end %>
+

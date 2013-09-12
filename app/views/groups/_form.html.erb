@@ -1,0 +1,58 @@
+<%= form_for(group) do |f| %>
+  <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :class => "span6", rows: 4 %>
+  </div>
+  <div class="field">
+    <%= f.label :logo %><br />
+    <%= f.file_field :logo %>
+  </div>
+  <div class="field">
+    <%= f.label "Splash image (from flickr):" %><br />
+    <%= f.text_field :splash_image, :class => "span6 form_tooltip", title: "Enter the URL to a photo on flickr" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Video (from Youtube):" %><br />
+    <%= f.text_field :video, :class => "span6 form_tooltip", title: "Enter the URL to a YouTube video" %>
+  </div>
+  <div class="field">
+    <%= f.label "Causes" %><br />
+    <%= f.text_field :cause_list, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label "Address" %><br />
+    <%= f.text_field :location, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, :class => "span6" %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website, :class => "span6" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

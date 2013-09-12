@@ -1,0 +1,58 @@
+<% groups.each do |group| %>
+    <div class='logo clearfix'>
+      <div class='col-md-1'>
+        <%= image_tag(group.logo.thumb.url, class: 'logo_image img-responsive') unless group.logo.thumb.url.nil? %>
+      </div>
+    <div class='col-sm-3 clearfix'>
+      <h2><%= link_to group.name, group %>
+      <%= link_to(edit_group_path(group), class:"h4") do
+          content_tag :span, 'Edit', class: "label label-default admin_option"
+      end %>
+      </h2>
+    </div>
+  </div>
+
+  <p><%= truncate(group.description, length: 253, separator: " ", omission: '... (continued)') %></p>
+
+
+  <h3>Events
+  <%= link_to(new_group_event_path(group), class: "h5") do
+    content_tag :span, 'Create an event', class: "label label-default admin_option"
+  end %>
+  </h3>
+
+
+  <% if group.events.count > 0 %>
+    <div id="events col-md-8">
+      <div class="panel-group" id="accordion">
+      <% group.events.each_with_index do |event, index| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>
+              <%= link_to event.name, event %>
+            </h4>
+            <h5>
+              <%= truncate(event.description, length: 53, separator: " ", omission: '... (continued)') %>
+              Spaces left: <%= content_tag :span, (event.number_volunteers - event.volunteers.count), class: 'badge' %>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<%= index %>">See Volunteers</a>
+              <%= link_to(edit_event_path(event)) do
+                   content_tag :span, 'Edit', class: "label label-default"
+              end %>
+              <%= link_to(event, method: :delete, :confirm => 'Are you sure?') do
+                   content_tag :span, 'Delete', class: "label label-danger"
+              end %>
+            </h5>
+          </div>
+          <div id="collapse<%= index %>" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= render partial: "shared/event_volunteers_list", locals: {event: event}%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+    <p>There are no events for <%= group.name %>. <%= link_to 'Add an event', new_group_event_path(group) %> </p>
+  <% end %>
+<% end %>
